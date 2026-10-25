@@ -96,12 +96,12 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--y);outline-offs
 </div></div>
 
 <div class="panel" id="pt"><div class="card">
-<p class="hint" style="margin-top:0">Dua kelompok bergantian menjawab. Jawaban benar menarik tali satu langkah. Kelompok yang mencapai garis kemenangan lebih dulu menang.</p>
+<p class="hint" style="margin-top:0">Ada 20 soal. Dua kelompok bergantian menjawab. Jawaban benar menarik tali satu langkah ke arah kelompokmu. Setelah soal habis, kelompok yang menarik tali lebih jauh menang. Jika seri, dilanjutkan dengan soal penentu.</p>
 <div class="teams">
 <input class="a" id="na" value="Kelompok A" aria-label="Nama kelompok A" maxlength="18">
 <input class="b" id="nb" value="Kelompok B" aria-label="Nama kelompok B" maxlength="18">
 </div>
-<div class="track" id="tr"><div class="win" style="left:0"></div><div class="win" style="right:0"></div><div class="mid"></div><div class="rope"></div><div class="knot" id="kt">🚩</div></div>
+<div class="track" id="tr"><div class="mid"></div><div class="rope"></div><div class="knot" id="kt">🚩</div></div>
 <div class="bar"><span id="sa"></span><span id="sb"></span></div>
 <div id="tq"></div>
 </div></div>
@@ -125,7 +125,15 @@ var B=[
 ["Pada kalimat “Setelah tiba di lokasi, petugas memadamkan api”, kata “setelah” menyatakan hubungan…",["Waktu","Sebab","Pertentangan","Tujuan"],0,"“Setelah” adalah konjungsi temporal (penanda waktu)."],
 ["Berita kenaikan harga BBM menarik karena memengaruhi banyak orang. Nilai beritanya adalah…",["Keunikan","Ketokohan","Kedekatan","Dampak"],3,"Peristiwa yang berpengaruh luas memiliki nilai berita dampak."],
 ["Cara terbaik memastikan kebenaran sebuah berita adalah…",["Melihat jumlah komentar","Membandingkannya dengan media tepercaya dan memeriksa sumbernya","Membagikannya dulu ke grup","Memercayai judul yang paling heboh"],1,"Periksa sumber dan bandingkan dengan media yang kredibel."],
-["Kalimat yang tidak layak masuk isi berita karena berupa opini penulis adalah…",["Kebakaran terjadi pukul 02.00 WIB.","Tidak ada korban jiwa.","Api padam setelah satu jam.","Kebakaran itu sungguh mengerikan dan memalukan."],3,"Penilaian pribadi seperti “mengerikan” bukan fakta dan melanggar prinsip objektivitas."]
+["Kalimat yang tidak layak masuk isi berita karena berupa opini penulis adalah…",["Kebakaran terjadi pukul 02.00 WIB.","Tidak ada korban jiwa.","Api padam setelah satu jam.","Kebakaran itu sungguh mengerikan dan memalukan."],3,"Penilaian pribadi seperti “mengerikan” bukan fakta dan melanggar prinsip objektivitas."],
+["Unsur “when” dalam berita menanyakan…",["Pelaku peristiwa","Waktu terjadinya peristiwa","Sebab peristiwa","Tempat peristiwa"],1,"When = kapan peristiwa terjadi."],
+["Unsur “who” dalam berita menjelaskan…",["Pelaku atau pihak yang terlibat","Waktu kejadian","Akibat peristiwa","Tempat kejadian"],0,"Who = siapa yang terlibat dalam peristiwa."],
+["Bagian berita yang berisi rincian peristiwa, latar, dan kronologi disebut…",["Judul","Teras berita","Isi berita","Sumber"],2,"Isi berita menguraikan peristiwa secara lebih lengkap setelah teras."],
+["Narasumber dalam berita adalah…",["Penulis berita","Pihak yang memberi keterangan kepada wartawan","Pembaca berita","Penyunting naskah"],1,"Narasumber memberikan keterangan atau pernyataan yang dikutip dalam berita."],
+["Manakah kalimat tidak langsung?",["Pak Joko berkata, “Pasar dibuka pukul enam.”","Pak Joko mengatakan bahwa pasar dibuka pukul enam.","“Pasar dibuka pukul enam,” ujar Pak Joko.","“Pasar dibuka pukul enam.”"],1,"Kalimat tidak langsung tanpa tanda petik dan memakai kata “bahwa”."],
+["Berita yang aktual berarti…",["Peristiwanya baru terjadi atau sedang hangat dibicarakan","Peristiwanya terjadi bertahun-tahun lalu","Berisi cerita khayalan","Hanya menyangkut satu orang"],0,"Aktual = baru dan sedang menjadi perhatian publik."],
+["Judul berita sebaiknya…",["Panjang dan penuh tanda seru","Singkat, jelas, dan sesuai isi","Memuat opini penulis","Dibuat misterius agar diklik"],1,"Judul yang baik ringkas dan tidak menyesatkan pembaca."],
+["Konjungsi temporal yang menyatakan urutan waktu adalah…",["karena","kemudian","namun","sehingga"],1,"“Kemudian” menunjukkan urutan peristiwa."]
 ];
 function ask(box,it,cb){
  var h=document.createElement("div"),p=document.createElement("p");p.textContent=it[0];h.appendChild(p);
@@ -188,35 +196,46 @@ function kshow(){
 }
 ks0();
 
-var pos=0,turn=0,tq=[],ti=0,over=false;
+var ca=0,cb=0,qn=0,sd=false,turn=0,tq=[],ti=0,over=false,TOT=20;
 function nm(i){return ($(i?"nb":"na").value||(i?"Kelompok B":"Kelompok A")).trim()}
 function tdraw(){
- $("kt").style.left=(50+pos*8)+"%";
- $("sa").textContent=nm(0)+": "+(pos<0?-pos:0)+" langkah";
- $("sb").textContent=nm(1)+": "+(pos>0?pos:0)+" langkah";
+ var pos=cb-ca;
+ $("kt").style.left=Math.max(6,Math.min(94,50+pos*4))+"%";
+ $("sa").textContent=nm(0)+": "+ca+" benar";
+ $("sb").textContent=nm(1)+": "+cb+" benar";
 }
 function tnext(){
  var box=$("tq");
  if(over)return;
+ if(qn>=TOT&&!sd)sd=true;
  if(ti>=tq.length){tq=sh(B);ti=0}
+ qn++;
  var t=document.createElement("div");t.className="turn";t.style.background=turn?"var(--tb)":"var(--ta)";
  if(turn)t.style.color="#1c1200";
- t.textContent="Giliran: "+nm(turn);
+ t.textContent="Giliran: "+nm(turn)+" · "+(sd?"Soal penentu":"Soal "+qn+" dari "+TOT);
  var q=document.createElement("div");
  box.innerHTML="";box.appendChild(t);box.appendChild(q);
  ask(q,tq[ti++],function(ok){
-  if(ok)pos+=turn?1:-1;
+  if(ok){if(turn)cb++;else ca++}
   tdraw();
   var n=document.createElement("button");n.className="btn";
-  if(Math.abs(pos)>=5){
-   over=true;var wn=pos>0?1:0;
-   var hh=document.createElement("h2");hh.textContent="🏆 "+nm(wn)+" menang!";q.appendChild(hh);
+  var end=(!sd&&qn>=TOT&&ca!==cb)||(sd&&turn===1&&ca!==cb);
+  if(end){
+   over=true;var wn=cb>ca?1:0;
+   var hh=document.createElement("h2");hh.textContent="🏆 "+nm(wn)+" menang!";
+   var pp=document.createElement("p");pp.textContent="Skor akhir: "+nm(0)+" "+ca+" – "+cb+" "+nm(1)+". "+nm(wn)+" menarik tali lebih jauh.";
+   q.appendChild(hh);q.appendChild(pp);
    n.textContent="Main lagi";n.onclick=tstart;
-  }else{turn=1-turn;n.textContent="Lanjut ke "+nm(turn);n.onclick=tnext}
+  }else{
+   var tie=(!sd&&qn>=TOT);
+   turn=1-turn;
+   n.textContent=tie?"Seri! Lanjut ke soal penentu":"Lanjut ke "+nm(turn);
+   n.onclick=tnext;
+  }
   q.appendChild(n);n.focus();
  });
 }
-function tstart(){pos=0;turn=0;over=false;tq=sh(B);ti=0;tdraw();tnext()}
+function tstart(){ca=0;cb=0;qn=0;sd=false;turn=0;over=false;tq=sh(B);ti=0;tdraw();tnext()}
 $("na").oninput=$("nb").oninput=function(){tdraw()};
 tstart();
 </script>
