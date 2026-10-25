@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teks Berita – Media Belajar Kelas XI</title>
+<style>
+:root{--bg:#EEF2F8;--sf:#fff;--ink:#0F2038;--mu:#4D5F7A;--ln:#C4D0E2;--g:#1F5FA8;--gd:#0F2747;--y:#F2B93B;--ya:#3B2A00;--ta:#0B7A7C;--tb:#C25E00;--ok:#1E7A46;--bad:#B3322E}
+@media(prefers-color-scheme:dark){:root{--bg:#0D1623;--sf:#16253A;--ink:#E6EEF9;--mu:#95A9C6;--ln:#2A3F5E;--g:#7DB6F0;--gd:#08101C;--y:#F2B93B;--ya:#2A1E00;--ta:#4FC3C5;--tb:#F0A04A;--ok:#6FD39A;--bad:#FF8A84}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Trebuchet MS","Segoe UI",system-ui,sans-serif}
+.w{max-width:860px;margin:0 auto;padding:0 18px 48px}
+header{background:var(--gd);color:#fff;padding:36px 0 30px}
+header .w{padding-bottom:0}
+.tag{display:inline-block;background:var(--y);color:var(--ya);border-radius:4px;padding:2px 10px;font-size:.82rem;font-weight:700;margin:0 6px 8px 0}
+h1{margin:6px 0 10px;font-size:clamp(1.9rem,6vw,3rem);line-height:1.1}
+h2{margin:0 0 8px;font-size:1.3rem}
+.cp{background:var(--sf);border:1px solid var(--ln);border-left:6px solid var(--g);border-radius:8px;padding:16px 20px;margin-top:22px}
+.cp p{margin:0 0 8px}.cp ol{margin:6px 0 0;padding-left:1.3em}
+.note{font-size:.82rem;color:var(--mu)}
+.tabs{display:flex;gap:8px;margin:26px 0 16px;flex-wrap:wrap}
+.tabs button{flex:1;min-width:120px;padding:12px;border:2px solid var(--ln);background:var(--sf);color:var(--ink);border-radius:8px;font:inherit;font-weight:700;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--g);border-color:var(--g);color:#fff}
+@media(prefers-color-scheme:dark){.tabs button[aria-selected=true]{color:#08101C}}
+button:focus-visible,input:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:18px}
+.btn{background:var(--gd);color:#fff;border:0;border-radius:8px;padding:10px 20px;font:inherit;font-weight:700;cursor:pointer}
+@media(prefers-color-scheme:dark){.btn{background:var(--g);color:#08101C}}
+.bar{display:flex;justify-content:space-between;gap:10px;margin-bottom:12px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.m{aspect-ratio:1/1.1;border-radius:10px;border:2px solid var(--ln);background:var(--g);color:#fff;font:inherit;font-size:.82rem;font-weight:600;padding:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.25}
+@media(prefers-color-scheme:dark){.m{color:#08101C}}
+.m .f{display:none}.m .b{font-size:1.8rem}
+.m.open{background:var(--sf);color:var(--ink);border-color:var(--g)}
+.m.open .f{display:block}.m.open .b{display:none}
+.m.done{background:var(--y);color:var(--ya);border-color:var(--y);cursor:default}
+.m.done .f{display:block}.m.done .b{display:none}
+.m.t{font-size:.95rem}
+.q p{font-weight:700;margin:0 0 12px;font-size:1.05rem}
+.o{display:block;width:100%;text-align:left;background:var(--sf);color:var(--ink);border:2px solid var(--ln);border-radius:8px;padding:10px 14px;margin-bottom:8px;font:inherit;cursor:pointer}
+.o:hover:not(:disabled){border-color:var(--g)}
+.o.r{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--sf))}
+.o.x{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 18%,var(--sf))}
+.fb{min-height:1.5em;color:var(--mu);font-size:.95rem;margin:6px 0 12px}
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.teams input{width:100%;padding:8px 10px;border:2px solid var(--ln);border-radius:8px;font:inherit;background:var(--sf);color:var(--ink)}
+.teams .a{border-color:var(--ta)}.teams .b{border-color:var(--tb)}
+.track{position:relative;height:96px;margin:14px 0;border-radius:10px;overflow:hidden;background:linear-gradient(90deg,color-mix(in srgb,var(--ta) 30%,var(--sf)) 50%,color-mix(in srgb,var(--tb) 30%,var(--sf)) 50%);border:2px solid var(--ln)}
+.rope{position:absolute;left:0;right:0;top:46px;height:6px;background:repeating-linear-gradient(90deg,#8a6a3a 0 8px,#6f5428 8px 14px)}
+.mid{position:absolute;left:50%;top:0;bottom:0;border-left:2px dashed var(--mu)}
+.win{position:absolute;top:0;bottom:0;width:8%;background:rgba(0,0,0,.12)}
+.knot{position:absolute;top:30px;left:50%;width:44px;margin-left:-22px;height:38px;border-radius:8px;background:var(--y);color:var(--ya);display:flex;align-items:center;justify-content:center;font-weight:800;transition:left .5s}
+.turn{padding:8px 14px;border-radius:8px;font-weight:700;color:#fff;display:inline-block;margin-bottom:10px}
+.hint{color:var(--mu);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(max-width:520px){.grid{gap:6px}.m{font-size:.7rem}.m.t{font-size:.78rem}}
+</style>
+</head>
+<body>
+<header><div class="w">
+<span class="tag">SMK · Kelas XI</span><span class="tag">Fase F</span><span class="tag">Bahasa Indonesia</span>
+<h1>Teks Berita</h1>
+<div>Bab 2 · Memori Box, Kuis, dan Tarik Tambang Kelompok</div>
+</div></header>
+
+<div class="w">
+<div class="cp">
+<h2>Capaian Pembelajaran</h2>
+<p>Peserta didik mampu membaca dan mengevaluasi informasi dalam teks berita berdasarkan keakuratan fakta dan objektivitas, serta menyusun berita yang memuat unsur 5W+1H secara runtut dan menggunakan kaidah kebahasaan yang tepat.</p>
+<b>Tujuan Pembelajaran</b>
+<ol>
+<li>Mengidentifikasi struktur teks berita (judul, teras berita, isi berita) dan unsur 5W+1H.</li>
+<li>Menggunakan kaidah kebahasaan berita (kalimat langsung dan tidak langsung, kata kerja verbal, konjungsi temporal).</li>
+<li>Menilai keakuratan dan objektivitas berita, termasuk membedakan fakta dan opini.</li>
+</ol>
+<p class="note" style="margin-top:10px">Rumusan CP dan TP ini ringkasan. Sesuaikan dengan teks resmi CP dan modul ajar Bapak/Ibu.</p>
+</div>
+
+<div class="tabs" role="tablist">
+<button role="tab" aria-selected="true" data-p="pm">🧠 Memori Box</button>
+<button role="tab" aria-selected="false" data-p="pk">❓ Kuis</button>
+<button role="tab" aria-selected="false" data-p="pt">🪢 Tarik Tambang</button>
+</div>
+
+<div class="panel on" id="pm"><div class="card">
+<div class="bar"><span id="mv">Langkah: 0</span><span id="mp">Pasangan: 0/8</span></div>
+<p class="hint" style="margin-top:0">Cocokkan istilah dengan artinya. Buka dua kartu setiap giliran.</p>
+<div class="grid" id="gm"></div>
+<p style="margin:14px 0 0"><button class="btn" id="mr">Acak ulang</button> <span id="mw" style="font-weight:700;margin-left:8px"></span></p>
+</div></div>
+
+<div class="panel" id="pk"><div class="card q">
+<div class="bar"><span id="kn"></span><span id="ks"></span></div>
+<div id="kq"></div>
+</div></div>
+
+<div class="panel" id="pt"><div class="card">
+<p class="hint" style="margin-top:0">Dua kelompok bergantian menjawab. Jawaban benar menarik tali satu langkah. Kelompok yang mencapai garis kemenangan lebih dulu menang.</p>
+<div class="teams">
+<input class="a" id="na" value="Kelompok A" aria-label="Nama kelompok A" maxlength="18">
+<input class="b" id="nb" value="Kelompok B" aria-label="Nama kelompok B" maxlength="18">
+</div>
+<div class="track" id="tr"><div class="win" style="left:0"></div><div class="win" style="right:0"></div><div class="mid"></div><div class="rope"></div><div class="knot" id="kt">🚩</div></div>
+<div class="bar"><span id="sa"></span><span id="sb"></span></div>
+<div id="tq"></div>
+</div></div>
+</div>
+
+<script>
+function sh(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function $(i){return document.getElementById(i)}
+var tb=document.querySelectorAll(".tabs button");
+tb.forEach(function(b){b.onclick=function(){tb.forEach(function(x){x.setAttribute("aria-selected",x===b)});document.querySelectorAll(".panel").forEach(function(p){p.classList.toggle("on",p.id===b.dataset.p)})}});
+
+var B=[
+["Bagian awal berita yang memuat informasi terpenting disebut…",["Isi berita","Penutup","Teras berita","Catatan kaki"],2,"Teras berita (lead) merangkum inti peristiwa di awal."],
+["Unsur “where” dalam 5W+1H menanyakan…",["Waktu kejadian","Tempat kejadian","Pelaku","Sebab"],1,"Where = di mana peristiwa terjadi."],
+["Unsur yang menjelaskan sebab terjadinya peristiwa adalah…",["What","When","Why","Who"],2,"Why = mengapa peristiwa itu terjadi."],
+["Susunan berita yang meletakkan informasi terpenting di awal disebut pola…",["Piramida terbalik","Kronologis dongeng","Spiral","Lingkaran"],0,"Pola piramida terbalik: dari yang terpenting ke yang kurang penting."],
+["Manakah yang termasuk kalimat langsung?",["Kepala sekolah mengatakan bahwa ujian dimulai Senin.","Kepala sekolah berkata, “Ujian dimulai hari Senin.”","Menurut kepala sekolah, ujian dimulai Senin.","Kepala sekolah menyampaikan jadwal ujian."],1,"Kalimat langsung mengutip ucapan dan diapit tanda petik."],
+["Kata yang lazim dipakai untuk melaporkan ucapan narasumber adalah…",["melompat","memasak","menyatakan","menimbang"],2,"“Menyatakan” termasuk kata kerja verbal untuk melaporkan ucapan."],
+["Berita harus objektif. Artinya berita disajikan…",["Sesuai fakta tanpa memihak","Semenarik mungkin walau dilebihkan","Dengan pendapat pribadi penulis","Dengan bahasa yang dramatis"],0,"Objektif berarti sesuai fakta dan tidak memihak."],
+["Manakah judul yang paling sesuai kaidah berita?",["LUAR BIASA!! Kamu Tidak Akan Percaya Ini!","Siswa SMK Juara Nasional Robotik di Surabaya","Mungkin Ada Lomba Hari Ini","Sedih Sekali Kabar Hari Ini"],1,"Judul berita singkat, jelas, dan memuat inti peristiwa."],
+["Pada kalimat “Setelah tiba di lokasi, petugas memadamkan api”, kata “setelah” menyatakan hubungan…",["Waktu","Sebab","Pertentangan","Tujuan"],0,"“Setelah” adalah konjungsi temporal (penanda waktu)."],
+["Berita kenaikan harga BBM menarik karena memengaruhi banyak orang. Nilai beritanya adalah…",["Keunikan","Ketokohan","Kedekatan","Dampak"],3,"Peristiwa yang berpengaruh luas memiliki nilai berita dampak."],
+["Cara terbaik memastikan kebenaran sebuah berita adalah…",["Melihat jumlah komentar","Membandingkannya dengan media tepercaya dan memeriksa sumbernya","Membagikannya dulu ke grup","Memercayai judul yang paling heboh"],1,"Periksa sumber dan bandingkan dengan media yang kredibel."],
+["Kalimat yang tidak layak masuk isi berita karena berupa opini penulis adalah…",["Kebakaran terjadi pukul 02.00 WIB.","Tidak ada korban jiwa.","Api padam setelah satu jam.","Kebakaran itu sungguh mengerikan dan memalukan."],3,"Penilaian pribadi seperti “mengerikan” bukan fakta dan melanggar prinsip objektivitas."]
+];
+function ask(box,it,cb){
+ var h=document.createElement("div"),p=document.createElement("p");p.textContent=it[0];h.appendChild(p);
+ var fb=document.createElement("div");fb.className="fb";
+ var bs=sh(it[1].map(function(t,i){return{t:t,ok:i===it[2]}})).map(function(o){
+  var b=document.createElement("button");b.className="o";b.textContent=o.t;b.o=o;return b});
+ bs.forEach(function(b){
+  b.onclick=function(){
+   bs.forEach(function(x){x.disabled=true;if(x.o.ok)x.classList.add("r")});
+   if(!b.o.ok)b.classList.add("x");
+   fb.textContent=(b.o.ok?"Benar. ":"Belum tepat. ")+it[3];
+   cb(b.o.ok);
+  };h.appendChild(b)});
+ h.appendChild(fb);box.innerHTML="";box.appendChild(h);
+}
+
+var PR=[["Teras berita","Bagian awal yang memuat informasi terpenting"],["Isi berita","Rincian peristiwa, latar, dan kronologi"],["Siapa (who)","Pelaku atau pihak yang terlibat"],["Mengapa (why)","Sebab terjadinya peristiwa"],["Bagaimana (how)","Proses atau jalannya kejadian"],["Kalimat langsung","Mengutip ucapan narasumber dengan tanda petik"],["Narasumber","Pihak yang memberi keterangan kepada wartawan"],["Objektif","Sesuai fakta dan tidak memihak"]];
+var mo=[],mc=0,mm=0,lock=false;
+function mk(){
+ var cs=[];PR.forEach(function(p,i){cs.push({id:i,t:p[0],term:1});cs.push({id:i,t:p[1],term:0})});
+ cs=sh(cs);mo=[];mc=0;mm=0;lock=false;
+ $("mw").textContent="";upd();
+ var g=$("gm");g.innerHTML="";
+ cs.forEach(function(c){
+  var b=document.createElement("button");b.className="m"+(c.term?" t":"");
+  b.innerHTML='<span class="b">❔</span><span class="f"></span>';b.lastChild.textContent=c.t;
+  b.setAttribute("aria-label","Kartu tertutup");
+  b.onclick=function(){
+   if(lock||b.classList.contains("open")||b.classList.contains("done"))return;
+   b.classList.add("open");b.c=c;mo.push(b);
+   if(mo.length===2){
+    mm++;var x=mo[0],y=mo[1];
+    if(x.c.id===y.c.id){x.className=x.className.replace("open","done");y.className=y.className.replace("open","done");mo=[];mc++;
+     if(mc===8)$("mw").textContent="Selesai dalam "+mm+" langkah!"}
+    else{lock=true;setTimeout(function(){x.classList.remove("open");y.classList.remove("open");mo=[];lock=false},900)}
+    upd();
+   }
+  };g.appendChild(b)});
+}
+function upd(){$("mv").textContent="Langkah: "+mm;$("mp").textContent="Pasangan: "+mc+"/8"}
+$("mr").onclick=mk;mk();
+
+var kq,ki,ks;
+function ks0(){kq=sh(B).slice(0,10);ki=0;ks=0;kshow()}
+function kshow(){
+ $("ks").textContent="Skor: "+ks;
+ var box=$("kq");
+ if(ki>=kq.length){
+  box.innerHTML="";var d=document.createElement("div");
+  d.innerHTML="<h2>Selesai! Skor akhir "+ks+" dari "+kq.length+"</h2><p>"+(ks>=8?"Pemahamanmu sudah sangat baik.":ks>=6?"Bagus. Ulangi materi yang masih keliru.":"Pelajari lagi struktur dan unsur 5W+1H, lalu coba kembali.")+"</p>";
+  var r=document.createElement("button");r.className="btn";r.textContent="Ulangi kuis";r.onclick=ks0;d.appendChild(r);box.appendChild(d);
+  $("kn").textContent="Selesai";return}
+ $("kn").textContent="Soal "+(ki+1)+" dari "+kq.length;
+ var w=document.createElement("div");box.innerHTML="";box.appendChild(w);
+ ask(w,kq[ki],function(ok){
+  if(ok)ks++;$("ks").textContent="Skor: "+ks;
+  var n=document.createElement("button");n.className="btn";n.textContent=ki+1<kq.length?"Soal berikutnya":"Lihat hasil";
+  n.onclick=function(){ki++;kshow()};w.appendChild(n);n.focus();
+ });
+}
+ks0();
+
+var pos=0,turn=0,tq=[],ti=0,over=false;
+function nm(i){return ($(i?"nb":"na").value||(i?"Kelompok B":"Kelompok A")).trim()}
+function tdraw(){
+ $("kt").style.left=(50+pos*8)+"%";
+ $("sa").textContent=nm(0)+": "+(pos<0?-pos:0)+" langkah";
+ $("sb").textContent=nm(1)+": "+(pos>0?pos:0)+" langkah";
+}
+function tnext(){
+ var box=$("tq");
+ if(over)return;
+ if(ti>=tq.length){tq=sh(B);ti=0}
+ var t=document.createElement("div");t.className="turn";t.style.background=turn?"var(--tb)":"var(--ta)";
+ if(turn)t.style.color="#1c1200";
+ t.textContent="Giliran: "+nm(turn);
+ var q=document.createElement("div");
+ box.innerHTML="";box.appendChild(t);box.appendChild(q);
+ ask(q,tq[ti++],function(ok){
+  if(ok)pos+=turn?1:-1;
+  tdraw();
+  var n=document.createElement("button");n.className="btn";
+  if(Math.abs(pos)>=5){
+   over=true;var wn=pos>0?1:0;
+   var hh=document.createElement("h2");hh.textContent="🏆 "+nm(wn)+" menang!";q.appendChild(hh);
+   n.textContent="Main lagi";n.onclick=tstart;
+  }else{turn=1-turn;n.textContent="Lanjut ke "+nm(turn);n.onclick=tnext}
+  q.appendChild(n);n.focus();
+ });
+}
+function tstart(){pos=0;turn=0;over=false;tq=sh(B);ti=0;tdraw();tnext()}
+$("na").oninput=$("nb").oninput=function(){tdraw()};
+tstart();
+</script>
+</body>
+</html>

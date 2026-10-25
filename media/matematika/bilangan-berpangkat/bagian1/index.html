@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Media Bab 1 – Bilangan Berpangkat (TP 1–3)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f8fafd;--grid:rgba(29,53,87,.08);--ink:#1d3557;--muted:#586a87;--card:#fff;--line:#cdd8ea;--blue:#2f6bff;--yellow:#ffd23f;--coral:#ff5d73;--teal:#13a08f;--soft:#eaf0fb;--sh:#1d3557;--onb:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e1a2b;--grid:rgba(255,255,255,.055);--ink:#eaf1ff;--muted:#9fb1cc;--card:#16263d;--line:#2c415f;--blue:#6c93ff;--coral:#ff7a8c;--teal:#3ccdb9;--soft:#1d3150;--sh:#050b14;--onb:#0e1a2b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0e1a2b;--grid:rgba(255,255,255,.055);--ink:#eaf1ff;--muted:#9fb1cc;--card:#16263d;--line:#2c415f;--blue:#6c93ff;--coral:#ff7a8c;--teal:#3ccdb9;--soft:#1d3150;--sh:#050b14;--onb:#0e1a2b;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;font:16px/1.6 'Lexend',system-ui,sans-serif}
+h1,h2,h3{font-family:'Fredoka','Lexend',sans-serif;font-weight:600;line-height:1.15;margin:0 0 .4rem}
+h1{font-size:clamp(1.9rem,6vw,2.8rem)}p{margin:0 0 .7em}sup{font-size:.68em;line-height:0;font-weight:600}
+.wrap{max-width:820px;margin:0 auto;padding:16px 16px 48px}
+button{font:inherit;color:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.muted{color:var(--muted)}.sub{color:var(--muted);margin:0 0 6px}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:8px;overflow-x:auto;padding:10px 0;margin:8px 0 14px;background:linear-gradient(var(--paper) 80%,transparent);scrollbar-width:none}
+.tab{flex:0 0 auto;border:2px solid var(--ink);background:var(--card);border-radius:999px;padding:7px 16px;font-weight:500;font-size:.92rem;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.pane{display:none}.pane.on{display:block}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:16px;padding:18px;box-shadow:4px 4px 0 var(--sh);margin-bottom:16px}
+.tp{display:inline-block;background:var(--yellow);color:#1d3557;border:2px solid var(--ink);border-radius:999px;padding:0 12px;font-size:.8rem;font-weight:500;margin-bottom:8px}
+.btn{display:inline-block;border:2px solid var(--ink);background:var(--yellow);color:#1d3557;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;padding:8px 20px;border-radius:12px;box-shadow:3px 3px 0 var(--sh)}
+.btn:active{transform:translate(3px,3px);box-shadow:none}.btn.alt{background:var(--card);color:var(--ink)}.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.seg button{border:2px solid var(--ink);background:var(--card);border-radius:10px;padding:5px 14px;font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--blue);color:var(--onb)}
+.big{font-family:'Fredoka',sans-serif;font-size:3.2rem;font-weight:600;line-height:1}
+.ex{background:var(--soft);border-radius:10px;padding:10px 14px;margin:.5rem 0;overflow-x:auto}
+.cells{display:flex;flex-wrap:wrap;gap:3px;min-height:24px;margin:10px 0}
+.cells i{width:18px;height:18px;background:var(--blue);border:2px solid var(--ink);border-radius:4px;animation:pop .25s both}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+.expr{font-family:'Fredoka',sans-serif;font-size:1.6rem;font-weight:600;color:var(--blue)}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.opt{border:2px solid var(--ink);background:var(--card);border-radius:12px;padding:10px 14px;font-family:'Fredoka',sans-serif;font-size:1.25rem;font-weight:600;box-shadow:3px 3px 0 var(--sh);text-align:left}
+.opt:not(:disabled):hover{background:var(--soft)}.opt.good{background:var(--teal);color:#fff}.opt.bad{background:var(--coral);color:#fff}.opt:disabled{cursor:default}
+.fb{margin-top:14px;border:2px solid var(--ink);border-radius:12px;padding:10px 14px}
+.fb.ok{background:color-mix(in srgb,var(--teal) 22%,var(--card))}.fb.no{background:color-mix(in srgb,var(--coral) 22%,var(--card))}
+.hud{display:flex;justify-content:space-between;font-weight:500;margin-bottom:10px}
+.cars{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 10px;align-items:center}
+.car{width:38px;height:30px;border:2px solid var(--ink);border-radius:6px;background:var(--yellow);color:#1d3557;display:grid;place-items:center;font:600 .95rem 'Fredoka',sans-serif;font-style:normal;position:relative}
+.car::after{content:'';position:absolute;bottom:-7px;left:6px;width:8px;height:8px;border-radius:50%;background:var(--ink);box-shadow:16px 0 0 var(--ink)}
+.car.new{background:var(--teal);color:#fff}.car.gone{background:var(--coral);color:#fff;text-decoration:line-through;opacity:.6}
+.train{margin:10px 0 14px}.train small{color:var(--muted);display:block}
+.lines{display:grid;gap:8px;margin:10px 0}
+.ln{border:2px solid var(--ink);background:var(--card);border-radius:10px;padding:8px 14px;text-align:left;font-size:1.15rem}
+.ln:not(:disabled):hover{background:var(--soft)}.ln.miss{opacity:.45;text-decoration:line-through}.ln.found{background:var(--coral);color:#fff}.ln:disabled{cursor:default}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 .15em;font-size:.92em}
+.frac>span:first-child{border-bottom:2px solid currentColor;padding:0 .25em}.frac>span:last-child{padding:0 .25em}
+.stars{font-size:2rem;letter-spacing:4px}.center{text-align:center}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Media Bab 1: Bilangan Berpangkat</h1>
+<p class="sub">Tiga media interaktif untuk Tujuan Pembelajaran 1, 2, dan 3. Matematika SMP Kelas 8.</p>
+<nav class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true" data-t="p1">TP 1 · Kotak Berlipat</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="p2">TP 2 · Kereta Pangkat</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="p3">TP 3 · Detektif Kesalahan</button>
+</nav>
+
+<!-- TP1 -->
+<section class="pane on" id="p1">
+  <div class="card">
+    <span class="tp">TP 1</span>
+    <h2>Kotak Berlipat</h2>
+    <p>Kertas dilipat dua: setiap lipatan <b>menggandakan</b> jumlah lapisan. Tekan “Lipat” dan amati hubungan jumlah lapisan dengan bilangan berpangkat.</p>
+    <div class="seg row" id="b1"><button data-b="2" aria-pressed="true">Digandakan 2 kali</button><button data-b="3" aria-pressed="false">Digandakan 3 kali</button></div>
+    <div class="row"><button class="btn" id="fold">Lipat</button><button class="btn alt" id="reset1">Ulang</button></div>
+    <div class="cells" id="cells" aria-label="Lapisan kertas"></div>
+    <div class="big" id="big"></div>
+    <div class="ex" id="f1"></div>
+    <p class="muted" id="note1"></p>
+  </div>
+  <div class="card">
+    <h3>Cek pemahaman</h3>
+    <p>Jadi, 3<sup>4</sup> artinya …</p>
+    <div class="opts" id="c1">
+      <button class="opt" data-ok="0">3 × 4 = 12</button>
+      <button class="opt" data-ok="1">3 × 3 × 3 × 3 = 81</button>
+      <button class="opt" data-ok="0">4 × 4 × 4 = 64</button>
+    </div>
+    <div class="fb" id="fb1" hidden></div>
+  </div>
+</section>
+
+<!-- TP2 -->
+<section class="pane" id="p2"><div class="card" id="g2"></div></section>
+
+<!-- TP3 -->
+<section class="pane" id="p3"><div class="card" id="g3"></div></section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),M='\u2212';
+const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=rnd(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
+const sup=(b,e)=>`${b}<sup>${e<0?M+(-e):e}</sup>`;
+const fmt=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+
+/* Tab */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===t.dataset.t));
+  window.scrollTo({top:0});
+});
+function endCard(el,title,sc,max,again){
+  const r=sc/max,st=r>=.9?3:r>=.6?2:1;
+  el.innerHTML=`<div class="center"><div class="stars">${'⭐'.repeat(st)}${'☆'.repeat(3-st)}</div><h2>${title}</h2><p>Skormu <b>${sc}</b> dari ${max}</p><button class="btn" id="again">Main lagi</button></div>`;
+  $('#again').onclick=again;
+}
+
+/* ===== TP1: Kotak Berlipat ===== */
+let b1=2,n1=0;
+function r1(){
+  const max=b1===2?6:4,v=b1**n1;
+  $('#cells').innerHTML=Array.from({length:v},(_,i)=>`<i style="animation-delay:${Math.min(i,40)*8}ms"></i>`).join('');
+  $('#big').innerHTML=sup(b1,n1);
+  const fac=n1===0?'1':Array(n1).fill(b1).join(' × ');
+  $('#f1').innerHTML=`${sup(b1,n1)} = ${fac} = <b>${v}</b> lapisan`;
+  $('#note1').innerHTML=n1===0
+    ?`Belum dilipat: hanya 1 lapisan. Inilah arti ${b1}<sup>0</sup> = 1.`
+    :`<b>Basis ${b1}</b> adalah bilangan yang dikalikan. <b>Pangkat ${n1}</b> adalah banyak lipatan, sekaligus banyak faktor ${b1} yang dikalikan.`;
+  $('#fold').disabled=n1>=max;
+}
+$('#fold').onclick=()=>{n1++;r1()};
+$('#reset1').onclick=()=>{n1=0;r1()};
+$('#b1').onclick=e=>{const b=e.target.closest('button');if(!b)return;b1=+b.dataset.b;n1=0;
+  document.querySelectorAll('#b1 button').forEach(x=>x.setAttribute('aria-pressed',x===b));r1()};
+$('#c1').onclick=e=>{
+  const b=e.target.closest('.opt');if(!b)return;const ok=b.dataset.ok==='1';
+  document.querySelectorAll('#c1 .opt').forEach(x=>{x.disabled=true;if(x.dataset.ok==='1')x.classList.add('good')});
+  if(!ok)b.classList.add('bad');
+  const f=$('#fb1');f.hidden=false;f.className='fb '+(ok?'ok':'no');
+  f.innerHTML=ok?'<b>Tepat.</b> Pangkat 4 berarti angka 3 dikalikan sebanyak 4 kali.':'<b>Belum tepat.</b> Pangkat bukan pengali. 3<sup>4</sup> berarti 3 × 3 × 3 × 3 = 81.';
+};
+r1();
+
+/* ===== TP2: Kereta Pangkat ===== */
+let g2;
+const cars=(k,c='')=>Array.from({length:k},()=>`<i class="car ${c}">${g2.a}</i>`).join('');
+function mkOpts(c,d){
+  const u=[c];d.forEach(x=>{if(x>0&&!u.includes(x))u.push(x)});
+  for(let k=1;u.length<4;k++)if(!u.includes(c+k))u.push(c+k);
+  const f=u.slice(0,4),o=shuffle(f.map((_,i)=>i));return{o:o.map(i=>f[i]),ans:o.indexOf(0)};
+}
+function s2(){g2={i:0,sc:0};n2()}
+function n2(){
+  if(g2.i>=8)return endCard($('#g2'),'Perjalanan selesai',g2.sc,80,s2);
+  const x=Math.random()<.5,a=rnd(2,9);let m,n;
+  if(x){m=rnd(1,5);n=rnd(1,4)}else{m=rnd(3,7);n=rnd(1,m-1)}
+  const c=x?m+n:m-n,d=x?[m*n,Math.abs(m-n),c+1,c-1]:[m+n,m*n,c+1,c-1,m-n+2];
+  g2.a=a;g2.q={x,a,m,n,c,...mkOpts(c,d)};
+  const op=x?'×':'÷';
+  $('#g2').innerHTML=`<span class="tp">TP 2</span><h2>Kereta Pangkat</h2>
+  <p class="muted">Setiap gerbong membawa basis ${a}. Banyak gerbong = pangkatnya. ${x?'Kereta A disambung dengan kereta B.':'Kereta B melepas gerbong dari kereta A.'}</p>
+  <div class="hud"><span>Soal ${g2.i+1}/8</span><span>⭐ ${g2.sc}</span></div>
+  <div class="expr">${sup(a,m)} ${op} ${sup(a,n)} = ${a}<sup>?</sup></div>
+  <div class="train"><small>Kereta A: ${m} gerbong</small><div class="cars">${cars(m)}</div><small>Kereta B: ${n} gerbong</small><div class="cars">${cars(n)}</div></div>
+  <div class="opts">${g2.q.o.map((v,k)=>`<button class="opt" data-k="${k}">${v}</button>`).join('')}</div>
+  <div class="fb" id="fb2" hidden></div>`;
+  document.querySelectorAll('#g2 .opt').forEach(b=>b.onclick=()=>a2(+b.dataset.k));
+}
+function a2(k){
+  const q=g2.q,ok=k===q.ans;
+  document.querySelectorAll('#g2 .opt').forEach((b,i)=>{b.disabled=true;if(i===q.ans)b.classList.add('good');else if(i===k)b.classList.add('bad')});
+  if(ok)g2.sc+=10;g2.i++;
+  const res=q.x?cars(q.m)+cars(q.n,'new'):cars(q.m-q.n)+cars(q.n,'gone');
+  const why=q.x?`Kereta disambung, jadi gerbong <b>dijumlahkan</b>: ${q.m} + ${q.n} = <b>${q.c}</b>.`:`Gerbong dilepas, jadi pangkat <b>dikurangkan</b>: ${q.m} − ${q.n} = <b>${q.c}</b>.`;
+  const f=$('#fb2');f.hidden=false;f.className='fb '+(ok?'ok':'no');
+  f.innerHTML=`<b>${ok?'Tepat, +10 poin.':'Belum tepat.'}</b><div class="cars" style="margin-top:8px">${res}</div>${why}<br>${sup(q.a,q.m)} ${q.x?'×':'÷'} ${sup(q.a,q.n)} = ${sup(q.a,q.c)} = ${fmt(BigInt(q.a)**BigInt(q.c))}<br><button class="btn" id="nx2" style="margin-top:10px">${g2.i>=8?'Lihat hasil':'Lanjut'}</button>`;
+  $('#nx2').onclick=n2;$('#nx2').focus();
+}
+s2();
+
+/* ===== TP3: Detektif Kesalahan ===== */
+const fr=(a,b)=>`<span class="frac"><span>${a}</span><span>${b}</span></span>`;
+const CASES=[
+ {l:[`2<sup>3</sup> × 2<sup>4</sup>`,`= 2<sup>3×4</sup>`,`= 2<sup>12</sup>`,`= 4.096`],e:1,fix:`= 2<sup>3+4</sup> = 2<sup>7</sup> = 128`,w:`Pada perkalian dengan basis sama, pangkat <b>dijumlahkan</b>, bukan dikalikan.`},
+ {l:[`(3<sup>2</sup>)<sup>3</sup>`,`= 3<sup>2+3</sup>`,`= 3<sup>5</sup>`,`= 243`],e:1,fix:`= 3<sup>2×3</sup> = 3<sup>6</sup> = 729`,w:`Pangkat dari pangkat <b>dikalikan</b>, bukan dijumlahkan.`},
+ {l:[`5<sup>6</sup> ÷ 5<sup>2</sup>`,`= 5<sup>6÷2</sup>`,`= 5<sup>3</sup>`,`= 125`],e:1,fix:`= 5<sup>6−2</sup> = 5<sup>4</sup> = 625`,w:`Pada pembagian dengan basis sama, pangkat <b>dikurangkan</b>.`},
+ {l:[`(2 × 3)<sup>2</sup>`,`= 2 × 3<sup>2</sup>`,`= 2 × 9`,`= 18`],e:1,fix:`= 2<sup>2</sup> × 3<sup>2</sup> = 4 × 9 = 36`,w:`Semua faktor di dalam kurung ikut dipangkatkan, bukan hanya yang terakhir.`},
+ {l:[`7<sup>0</sup>`,`= 7 × 0`,`= 0`],e:1,fix:`7<sup>0</sup> = 1`,w:`Bilangan (selain 0) berpangkat nol sama dengan <b>1</b>. Buktinya 7<sup>2</sup> ÷ 7<sup>2</sup> = 7<sup>0</sup> = 1.`},
+ {l:[`2<sup>${M}3</sup>`,`= ${M}2<sup>3</sup>`,`= ${M}8`],e:1,fix:`= ${fr(1,'2<sup>3</sup>')} = ${fr(1,8)}`,w:`Pangkat negatif berarti <b>kebalikan</b>, bukan bilangan negatif.`},
+ {l:[`3<sup>2</sup> × 3<sup>4</sup>`,`= (3 × 3)<sup>2+4</sup>`,`= 9<sup>6</sup>`],e:1,fix:`= 3<sup>2+4</sup> = 3<sup>6</sup> = 729`,w:`Basis tidak ikut dioperasikan. Hanya pangkatnya yang dijumlahkan.`}
+];
+let g3;
+function s3(){g3={i:0,sc:0,set:shuffle(CASES.slice()).slice(0,6)};n3()}
+function n3(){
+  if(g3.i>=6)return endCard($('#g3'),'Kasus terpecahkan',g3.sc,60,s3);
+  const c=g3.set[g3.i];g3.w=0;g3.done=false;
+  $('#g3').innerHTML=`<span class="tp">TP 3</span><h2>Detektif Kesalahan</h2>
+  <p class="muted">Seorang siswa mengerjakan soal berikut. Ketuk <b>satu baris</b> yang mengandung kesalahan.</p>
+  <div class="hud"><span>Kasus ${g3.i+1}/6</span><span>⭐ ${g3.sc}</span></div>
+  <div class="lines">${c.l.map((t,i)=>`<button class="ln" data-i="${i}">${t}</button>`).join('')}</div>
+  <div class="fb" id="fb3" hidden></div>`;
+  document.querySelectorAll('#g3 .ln').forEach(b=>b.onclick=()=>a3(+b.dataset.i,b));
+}
+function a3(i,b){
+  const c=g3.set[g3.i],f=$('#fb3');
+  if(i!==c.e){g3.w++;b.classList.add('miss');b.disabled=true;f.hidden=false;f.className='fb no';f.innerHTML='Baris ini sudah benar. Periksa lagi langkah lainnya.';return}
+  const pts=Math.max(2,10-g3.w*4);g3.sc+=pts;g3.i++;
+  document.querySelectorAll('#g3 .ln').forEach(x=>x.disabled=true);b.classList.add('found');
+  f.hidden=false;f.className='fb ok';
+  f.innerHTML=`<b>Ketemu! +${pts} poin</b><br>${c.w}<div class="ex">Perbaikan:<br>${c.fix}</div><button class="btn" id="nx3">${g3.i>=6?'Lihat hasil':'Kasus berikutnya'}</button>`;
+  $('#nx3').onclick=n3;$('#nx3').focus();
+}
+s3();
+</script>
+</body>
+</html>

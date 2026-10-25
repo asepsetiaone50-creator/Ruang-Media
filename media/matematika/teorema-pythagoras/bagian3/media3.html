@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Media Konsep Bab 2 – Segitiga Istimewa</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f8fafd;--grid:rgba(29,53,87,.08);--ink:#1d3557;--muted:#586a87;--card:#fff;--line:#cdd8ea;--blue:#2f6bff;--yellow:#ffd23f;--coral:#ff5d73;--teal:#13a08f;--soft:#eaf0fb;--sh:#1d3557;--onb:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e1a2b;--grid:rgba(255,255,255,.055);--ink:#eaf1ff;--muted:#9fb1cc;--card:#16263d;--line:#2c415f;--blue:#6c93ff;--coral:#ff7a8c;--teal:#3ccdb9;--soft:#1d3150;--sh:#050b14;--onb:#0e1a2b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0e1a2b;--grid:rgba(255,255,255,.055);--ink:#eaf1ff;--muted:#9fb1cc;--card:#16263d;--line:#2c415f;--blue:#6c93ff;--coral:#ff7a8c;--teal:#3ccdb9;--soft:#1d3150;--sh:#050b14;--onb:#0e1a2b;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;font:16px/1.65 'Lexend',system-ui,sans-serif}
+h1,h2,h3{font-family:'Fredoka','Lexend',sans-serif;font-weight:600;line-height:1.15;margin:0 0 .4rem}
+h1{font-size:clamp(1.9rem,6vw,2.8rem)}h3{font-size:1.15rem;margin:0}p{margin:0 0 .7em}sup{font-size:.68em;line-height:0;font-weight:600}
+.wrap{max-width:820px;margin:0 auto;padding:16px 16px 48px}
+button,select,input{font:inherit;color:inherit}button{cursor:pointer}:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.muted{color:var(--muted)}.sub{color:var(--muted);margin:0 0 6px}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:8px;overflow-x:auto;padding:10px 0;margin:8px 0 14px;background:linear-gradient(var(--paper) 80%,transparent);scrollbar-width:none}
+.tab{flex:0 0 auto;border:2px solid var(--ink);background:var(--card);border-radius:999px;padding:7px 16px;font-weight:500;font-size:.92rem;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.pane{display:none}.pane.on{display:block}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:16px;padding:18px;box-shadow:4px 4px 0 var(--sh);margin-bottom:16px}
+.goal{border:2px dashed var(--ink);border-radius:14px;padding:10px 16px;margin-bottom:16px;background:color-mix(in srgb,var(--yellow) 25%,var(--card))}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--yellow);color:#1d3557;border:2px solid var(--ink);font:600 1rem 'Fredoka',sans-serif;flex:0 0 30px}
+.btn{display:inline-block;border:2px solid var(--ink);background:var(--yellow);color:#1d3557;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;padding:7px 18px;border-radius:12px;box-shadow:3px 3px 0 var(--sh)}
+.btn:active{transform:translate(3px,3px);box-shadow:none}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.ex{background:var(--soft);border-radius:10px;padding:10px 14px;margin:.5rem 0;overflow-x:auto;line-height:1.9}
+table{border-collapse:collapse;width:100%;font-size:.92rem;margin:8px 0}
+th,td{border:2px solid var(--line);padding:4px 6px;text-align:center}th{background:var(--soft);font-weight:500}
+.sl{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:8px 0}
+.sl label{display:flex;flex-direction:column;font-size:.9rem}.sl output{font:600 1.1rem 'Fredoka',sans-serif}
+input[type=range]{width:100%;accent-color:var(--blue)}
+input[type=number],select{border:2px solid var(--ink);border-radius:10px;background:var(--card);padding:5px 10px;max-width:100%}
+input[type=number]{width:120px}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:8px 0}
+.opt{border:2px solid var(--ink);background:var(--card);border-radius:12px;padding:9px 14px;font-weight:500;text-align:left;box-shadow:3px 3px 0 var(--sh)}
+.opt:not(:disabled):hover{background:var(--soft)}.opt.good{background:var(--teal);color:#fff}.opt.bad{background:var(--coral);color:#fff}.opt:disabled{cursor:default}
+.fb{margin-top:10px;border:2px solid var(--ink);border-radius:12px;padding:9px 14px}
+.fb.ok{background:color-mix(in srgb,var(--teal) 22%,var(--card))}.fb.no{background:color-mix(in srgb,var(--coral) 22%,var(--card))}
+.sum{margin-top:12px;border:2px solid var(--ink);border-left-width:8px;border-radius:12px;padding:10px 14px;background:color-mix(in srgb,var(--blue) 12%,var(--card))}
+svg{display:block;width:100%;max-width:400px;margin:8px auto;height:auto}
+.st{fill:var(--yellow);fill-opacity:.55;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}.eq{fill:var(--blue);fill-opacity:.12;stroke:var(--ink);stroke-width:2;stroke-dasharray:6 4}
+.tx{fill:var(--ink);font:600 14px 'Fredoka',sans-serif;text-anchor:middle}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Segitiga Istimewa</h1>
+<p class="sub">Pelengkap Bab 2 Teorema Pythagoras. Siswa menemukan sendiri perbandingan sisi pada segitiga siku-siku 45°-45°-90° dan 30°-60°-90°. Matematika SMP Kelas 8.</p>
+<nav class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true" data-t="pa">45° – 45° – 90°</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="pb">30° – 60° – 90°</button>
+</nav>
+
+<!-- 45-45-90 -->
+<section class="pane on" id="pa">
+  <div class="goal"><b>Tujuan:</b> menemukan dan menjelaskan perbandingan sisi segitiga siku-siku sama kaki (45°-45°-90°) dan menggunakannya untuk menghitung sisi.</div>
+  <div class="card">
+    <div class="sh"><span class="n">1</span><h3>Amati: panjang kaki dan sisi miring</h3></div>
+    <p>Kedua kaki sama panjang. Ubah panjang kaki, lalu tekan “Catat”.</p>
+    <div class="sl"><label>Panjang kaki s <output id="oa">3</output><input type="range" id="xa" min="1" max="10" value="3"></label></div>
+    <svg id="sa" viewBox="0 0 240 230" role="img" aria-label="Segitiga siku-siku sama kaki"></svg>
+    <div class="ex" id="ra"></div>
+    <button class="btn" id="ca">Catat pengamatan</button>
+    <table><thead><tr><th>Kaki s</th><th>c² = s² + s²</th><th>Sisi miring c</th><th>c ÷ s</th></tr></thead><tbody id="ta"><tr><td colspan="4" class="muted">Belum ada catatan</td></tr></tbody></table>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">2</span><h3>Temukan perbandingannya</h3></div>
+    <div id="ma"></div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">3</span><h3>Simpulkan</h3></div>
+    <p>Pada segitiga 45°-45°-90°, kedua kaki
+      <select id="sa1"><option value="">pilih…</option><option value="1">sama panjang</option><option value="0">berbeda panjang</option></select>
+      dan sisi miring = panjang kaki ×
+      <select id="sa2"><option value="">pilih…</option><option value="1">√2</option><option value="0">2</option><option value="0">√3</option></select>.</p>
+    <button class="btn" id="ba">Periksa</button><div class="fb" id="fa" hidden></div>
+    <div class="sum" id="sma" hidden>Perbandingan sisi: kaki : kaki : sisi miring = <b>1 : 1 : √2</b>. Alasannya: c² = s² + s² = 2s², sehingga c = s√2.</div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">4</span><h3>Terapkan dan luruskan</h3></div>
+    <div id="m1"></div><div id="m2" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<!-- 30-60-90 -->
+<section class="pane" id="pb">
+  <div class="goal"><b>Tujuan:</b> menemukan dan menjelaskan perbandingan sisi segitiga 30°-60°-90° dari segitiga sama sisi yang dibelah dua.</div>
+  <div class="card">
+    <div class="sh"><span class="n">1</span><h3>Amati: belah segitiga sama sisi</h3></div>
+    <p>Segitiga sama sisi bersisi 2a dibelah tegak lurus menjadi dua. Setengahnya adalah segitiga 30°-60°-90°. Ubah nilai a, lalu tekan “Catat”.</p>
+    <div class="sl"><label>Setengah sisi a <output id="ob">2</output><input type="range" id="xb" min="1" max="8" value="2"></label></div>
+    <svg id="sb" viewBox="0 0 300 240" role="img" aria-label="Segitiga sama sisi dibelah dua"></svg>
+    <div class="ex" id="rb"></div>
+    <button class="btn" id="cb">Catat pengamatan</button>
+    <table><thead><tr><th>a</th><th>Sisi miring</th><th>Sisi panjang²</th><th>Sisi panjang</th><th>panjang ÷ a</th></tr></thead><tbody id="tb"><tr><td colspan="5" class="muted">Belum ada catatan</td></tr></tbody></table>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">2</span><h3>Temukan perbandingannya</h3></div>
+    <div id="mb"></div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">3</span><h3>Simpulkan</h3></div>
+    <p>Sisi di depan sudut 30° adalah sisi
+      <select id="sb1"><option value="">pilih…</option><option value="1">terpendek</option><option value="0">terpanjang</option></select>.
+      Sisi miring =
+      <select id="sb2"><option value="">pilih…</option><option value="1">2 × sisi terpendek</option><option value="0">√2 × sisi terpendek</option><option value="0">√3 × sisi terpendek</option></select>.
+      Sisi di depan sudut 60° = sisi terpendek ×
+      <select id="sb3"><option value="">pilih…</option><option value="1">√3</option><option value="0">√2</option><option value="0">2</option></select>.</p>
+    <button class="btn" id="bb">Periksa</button><div class="fb" id="fb" hidden></div>
+    <div class="sum" id="smb" hidden>Perbandingan sisi: sisi di depan 30° : sisi di depan 60° : sisi miring = <b>1 : √3 : 2</b>. Alasannya: (2a)² − a² = 3a², sehingga sisi panjang = a√3.</div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">4</span><h3>Terapkan dan luruskan</h3></div>
+    <p>Sisi miring sebuah segitiga 30°-60°-90° adalah 12 cm. Berapa panjang sisi terpendeknya?</p>
+    <div class="row"><input type="number" id="qb" inputmode="numeric" aria-label="Jawaban"><button class="btn" id="bq">Periksa</button></div><div class="fb" id="fq" hidden></div>
+    <div id="m3" style="margin-top:14px"></div>
+  </div>
+</section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const say=(el,ok,h)=>{el.hidden=false;el.className='fb '+(ok?'ok':'no');el.innerHTML=h};
+const dec=x=>x.toFixed(2).replace('.',',');
+const pt=p=>p[0].toFixed(1)+','+p[1].toFixed(1);
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===t.dataset.t));
+  window.scrollTo({top:0});
+});
+function mc(id,q,opts,done,pre){
+  const c=$(id);
+  c.innerHTML=`<p>${q}</p><div class="opts">${opts.map((o,i)=>`<button class="opt" data-i="${i}">${o.t}</button>`).join('')}</div><div class="fb" hidden></div>`;
+  c.onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;const o=opts[+b.dataset.i],f=c.querySelector('.fb');
+    if(pre){const m=pre();if(m)return say(f,false,m)}
+    const w=typeof o.w==='function'?o.w():o.w;
+    if(o.ok){c.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add('good');say(f,true,w);done&&done()}
+    else{b.classList.add('bad');b.disabled=true;say(f,false,w)}};
+}
+function selchk(btn,sels,fb,sum,msg){
+  $(btn).onclick=()=>{const v=sels.map(s=>$(s).value),f=$(fb);
+    if(v.includes(''))return say(f,false,'Lengkapi semua pilihan dulu.');
+    if(v.every(x=>x==='1')){say(f,true,'<b>Tepat.</b> Kamu sudah menyimpulkannya sendiri.');$(sum).hidden=false}else say(f,false,msg)};
+}
+
+/* ===== 45-45-90 ===== */
+let ra=[];
+function fa(){
+  const s=+$('#xa').value,u=17,C=[30,200],B=[30+s*u,200],A=[30,200-s*u],c=s*Math.SQRT2;$('#oa').textContent=s;
+  $('#sa').innerHTML=`<polygon class="st" points="${pt(A)} ${pt(B)} ${pt(C)}"/><path d="M42 200v-12h-12" fill="none" stroke="var(--ink)" stroke-width="2"/>
+   <text class="tx" x="${C[0]+s*u/2}" y="220">${s}</text><text class="tx" x="14" y="${C[1]-s*u/2}">${s}</text>
+   <text class="tx" x="${(A[0]+B[0])/2+18}" y="${(A[1]+B[1])/2-4}" style="fill:var(--coral)">c ≈ ${dec(c)}</text>
+   <text class="tx" x="${B[0]-30}" y="192">45°</text><text class="tx" x="${A[0]+26}" y="${A[1]+22}">45°</text>`;
+  $('#ra').innerHTML=`c² = ${s}² + ${s}² = ${s*s} + ${s*s} = <b>${2*s*s}</b><br>c = √${2*s*s} = ${s}√2 ≈ <b>${dec(c)}</b>`;
+}
+$('#xa').oninput=fa;
+$('#ca').onclick=()=>{const s=+$('#xa').value;if(!ra.includes(s))ra.push(s);
+  $('#ta').innerHTML=ra.map(s=>`<tr><td>${s}</td><td>${2*s*s}</td><td>${dec(s*Math.SQRT2)}</td><td>${dec(Math.SQRT2)}</td></tr>`).join('')};
+mc('#ma','Dari catatanmu (minimal 3), bagaimana perbandingan kaki : kaki : sisi miring?',[
+ {t:'1 : 1 : √2',ok:1,w:'<b>Cocok untuk semua catatanmu.</b> Kolom c ÷ s selalu 1,41…, yaitu √2.'},
+ {t:'1 : 1 : 2',w:()=>{const s=ra[0];return `Cek catatanmu: kaki ${s}, sisi miring ≈ ${dec(s*Math.SQRT2)}. Itu bukan ${2*s}. Kolom c ÷ s tidak bernilai 2.`}},
+ {t:'1 : 2 : √3',w:'Kedua kaki sama panjang, jadi perbandingan keduanya 1 : 1, bukan 1 : 2.'}],
+ ()=>$('#sma').hidden=false,
+ ()=>ra.length<3?`Catat dulu minimal 3 pengamatan berbeda (sekarang ${ra.length}).`:'');
+selchk('#ba',['#sa1','#sa2'],'#fa','#sma','Belum tepat. Lihat tabel: kedua kaki sama panjang, dan kolom c ÷ s bernilai sekitar 1,41, yaitu √2.');
+mc('#m1','Sebuah persegi bersisi 6 cm. Diagonalnya membaginya menjadi dua segitiga 45°-45°-90°. Berapa panjang diagonal?',[
+ {t:'12 cm',w:'12 = 6 + 6 menjumlahkan sisi. Diagonal adalah sisi miring: 6 × √2, bukan 6 × 2.'},
+ {t:'6√2 cm (≈ 8,49 cm)',ok:1,w:'<b>Tepat.</b> Diagonal adalah sisi miring segitiga 45°-45°-90°: 6 × √2. Cek: 6² + 6² = 72 dan (6√2)² = 72.'},
+ {t:'6 cm',w:'Diagonal persegi lebih panjang dari sisinya karena merupakan sisi miring.'}]);
+mc('#m2','Sisi miring segitiga 45°-45°-90° adalah 10 cm. Berapa panjang kakinya?',[
+ {t:'5 cm',w:'5 adalah setengah dari 10. Itu berlaku pada segitiga 30°-60°-90°, bukan di sini. Cek: 5² + 5² = 50, bukan 100.'},
+ {t:'5√2 cm (≈ 7,07 cm)',ok:1,w:'<b>Tepat.</b> Kaki = 10 ÷ √2 = 10√2 ÷ 2 = 5√2. Cek: (5√2)² + (5√2)² = 50 + 50 = 100.'},
+ {t:'10√2 cm',w:'Itu lebih panjang dari sisi miringnya (10). Kaki harus lebih pendek dari sisi miring.'}]);
+fa();
+
+/* ===== 30-60-90 ===== */
+let rb=[];
+function fb(){
+  const a=+$('#xb').value,h=a*Math.sqrt(3),s=Math.min(125/a,190/h),M=[150,215];$('#ob').textContent=a;
+  const A=[M[0]-a*s,215],B=[M[0]+a*s,215],C=[150,215-h*s];
+  $('#sb').innerHTML=`<polygon class="eq" points="${pt(A)} ${pt(B)} ${pt(C)}"/><polygon class="st" points="${pt(M)} ${pt(B)} ${pt(C)}"/>
+   <path d="M${M[0]+10} 215v-10h-10" fill="none" stroke="var(--ink)" stroke-width="2"/>
+   <text class="tx" x="${M[0]+a*s/2}" y="233">a = ${a}</text><text class="tx" x="${M[0]-22}" y="${215-h*s/2}">a√3</text>
+   <text class="tx" x="${(B[0]+C[0])/2+22}" y="${(C[1]+215)/2}" style="fill:var(--coral)">2a = ${2*a}</text>
+   <text class="tx" x="${C[0]+4}" y="${C[1]+34}">30°</text><text class="tx" x="${B[0]-34}" y="207">60°</text>`;
+  $('#rb').innerHTML=`sisi miring = sisi segitiga sama sisi = 2a = <b>${2*a}</b>, sisi pendek = setengah alas = a = <b>${a}</b><br>sisi panjang² = (2a)² − a² = ${4*a*a} − ${a*a} = ${3*a*a}<br>sisi panjang = √${3*a*a} = ${a}√3 ≈ <b>${dec(h)}</b>`;
+}
+$('#xb').oninput=fb;
+$('#cb').onclick=()=>{const a=+$('#xb').value;if(!rb.includes(a))rb.push(a);
+  $('#tb').innerHTML=rb.map(a=>`<tr><td>${a}</td><td>${2*a}</td><td>${3*a*a}</td><td>${dec(a*Math.sqrt(3))}</td><td>${dec(Math.sqrt(3))}</td></tr>`).join('')};
+mc('#mb','Dari catatanmu (minimal 3), bagaimana perbandingan sisi pendek : sisi panjang : sisi miring?',[
+ {t:'1 : √3 : 2',ok:1,w:'<b>Cocok untuk semua catatanmu.</b> Kolom panjang ÷ a selalu 1,73…, yaitu √3, dan sisi miring selalu 2a.'},
+ {t:'1 : 1 : √2',w:()=>{const a=rb[0];return `Itu perbandingan segitiga 45°-45°-90°. Di catatanmu, a = ${a} tetapi sisi panjang ≈ ${dec(a*Math.sqrt(3))}, bukan ${a}.`}},
+ {t:'1 : 2 : 3',w:()=>{const a=rb[0];return `Cek catatanmu: a = ${a}, sisi panjang ≈ ${dec(a*Math.sqrt(3))}, bukan ${2*a}. Sisi miringnya ${2*a}.`}}],
+ ()=>$('#smb').hidden=false,
+ ()=>rb.length<3?`Catat dulu minimal 3 pengamatan berbeda (sekarang ${rb.length}).`:'');
+selchk('#bb',['#sb1','#sb2','#sb3'],'#fb','#smb','Belum tepat. Lihat gambar: sisi miring adalah 2a, sisi di depan 30° adalah a, dan sisi di depan 60° adalah a√3.');
+$('#bq').onclick=()=>{const f=$('#fq');if(!$('#qb').value)return say(f,false,'Tulis jawabanmu dulu.');const v=+$('#qb').value;
+  if(v===6)say(f,true,'<b>Tepat.</b> Sisi miring = 2 × sisi terpendek, jadi sisi terpendek = 12 ÷ 2 = 6 cm.');
+  else if(v===24)say(f,false,'24 = 12 × 2. Sisi miring justru <b>dua kali</b> sisi terpendek, jadi sisi terpendek adalah setengahnya.');
+  else say(f,false,'Belum tepat. Pada segitiga 30°-60°-90°, sisi miring = 2 × sisi terpendek.')};
+mc('#m3','Pada segitiga 30°-60°-90° dengan sisi miring 10 cm, sisi di depan sudut 60° adalah…',[
+ {t:'10√3 cm',w:'Itu lebih panjang dari sisi miring. Sisi terpendek = 5, lalu kalikan √3.'},
+ {t:'5√3 cm (≈ 8,66 cm)',ok:1,w:'<b>Tepat.</b> Sisi terpendek = 10 ÷ 2 = 5, sisi di depan 60° = 5√3. Cek: 5² + (5√3)² = 25 + 75 = 100 = 10².'},
+ {t:'5 cm',w:'5 cm adalah sisi terpendek (di depan sudut 30°), bukan sisi di depan sudut 60°.'}]);
+fb();
+</script>
+</body>
+</html>

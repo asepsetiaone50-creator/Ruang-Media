@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Media Konsep Bab 2 – Teorema Pythagoras (TP 1–2)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f8fafd;--grid:rgba(29,53,87,.08);--ink:#1d3557;--muted:#586a87;--card:#fff;--line:#cdd8ea;--blue:#2f6bff;--yellow:#ffd23f;--coral:#ff5d73;--teal:#13a08f;--soft:#eaf0fb;--sh:#1d3557;--onb:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e1a2b;--grid:rgba(255,255,255,.055);--ink:#eaf1ff;--muted:#9fb1cc;--card:#16263d;--line:#2c415f;--blue:#6c93ff;--coral:#ff7a8c;--teal:#3ccdb9;--soft:#1d3150;--sh:#050b14;--onb:#0e1a2b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0e1a2b;--grid:rgba(255,255,255,.055);--ink:#eaf1ff;--muted:#9fb1cc;--card:#16263d;--line:#2c415f;--blue:#6c93ff;--coral:#ff7a8c;--teal:#3ccdb9;--soft:#1d3150;--sh:#050b14;--onb:#0e1a2b;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;font:16px/1.65 'Lexend',system-ui,sans-serif}
+h1,h2,h3{font-family:'Fredoka','Lexend',sans-serif;font-weight:600;line-height:1.15;margin:0 0 .4rem}
+h1{font-size:clamp(1.9rem,6vw,2.8rem)}h3{font-size:1.15rem;margin:0}p{margin:0 0 .7em}sup{font-size:.68em;line-height:0;font-weight:600}
+.wrap{max-width:820px;margin:0 auto;padding:16px 16px 48px}
+button,select,input{font:inherit;color:inherit}button{cursor:pointer}:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.muted{color:var(--muted)}.sub{color:var(--muted);margin:0 0 6px}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:8px;overflow-x:auto;padding:10px 0;margin:8px 0 14px;background:linear-gradient(var(--paper) 80%,transparent);scrollbar-width:none}
+.tab{flex:0 0 auto;border:2px solid var(--ink);background:var(--card);border-radius:999px;padding:7px 16px;font-weight:500;font-size:.92rem;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.pane{display:none}.pane.on{display:block}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:16px;padding:18px;box-shadow:4px 4px 0 var(--sh);margin-bottom:16px}
+.goal{border:2px dashed var(--ink);border-radius:14px;padding:10px 16px;margin-bottom:16px;background:color-mix(in srgb,var(--yellow) 25%,var(--card))}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--yellow);color:#1d3557;border:2px solid var(--ink);font:600 1rem 'Fredoka',sans-serif;flex:0 0 30px}
+.btn{display:inline-block;border:2px solid var(--ink);background:var(--yellow);color:#1d3557;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;padding:7px 18px;border-radius:12px;box-shadow:3px 3px 0 var(--sh)}
+.btn:active{transform:translate(3px,3px);box-shadow:none}.btn.alt{background:var(--card);color:var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.seg button{border:2px solid var(--ink);background:var(--card);border-radius:10px;padding:5px 14px;font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--blue);color:var(--onb)}
+.ex{background:var(--soft);border-radius:10px;padding:10px 14px;margin:.5rem 0;overflow-x:auto;line-height:1.9}
+table{border-collapse:collapse;width:100%;font-size:.95rem;margin:8px 0}
+th,td{border:2px solid var(--line);padding:4px 8px;text-align:center}th{background:var(--soft);font-weight:500}
+.sl{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:8px 0}
+.sl label{display:flex;flex-direction:column;font-size:.9rem}.sl output{font:600 1.1rem 'Fredoka',sans-serif}
+input[type=range]{width:100%;accent-color:var(--blue)}
+input[type=number]{border:2px solid var(--ink);border-radius:10px;background:var(--card);padding:5px 10px;width:120px}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:8px 0}
+.opt{border:2px solid var(--ink);background:var(--card);border-radius:12px;padding:9px 14px;font-weight:500;text-align:left;box-shadow:3px 3px 0 var(--sh)}
+.opt:not(:disabled):hover{background:var(--soft)}.opt.good{background:var(--teal);color:#fff}.opt.bad{background:var(--coral);color:#fff}.opt:disabled{cursor:default}
+.fb{margin-top:10px;border:2px solid var(--ink);border-radius:12px;padding:9px 14px}
+.fb.ok{background:color-mix(in srgb,var(--teal) 22%,var(--card))}.fb.no{background:color-mix(in srgb,var(--coral) 22%,var(--card))}
+.sum{margin-top:12px;border:2px solid var(--ink);border-left-width:8px;border-radius:12px;padding:10px 14px;background:color-mix(in srgb,var(--blue) 12%,var(--card))}
+svg{display:block;width:100%;max-width:420px;margin:8px auto;height:auto}
+.sa{fill:var(--teal);fill-opacity:.35;stroke:var(--ink);stroke-width:2}.sb{fill:var(--blue);fill-opacity:.3;stroke:var(--ink);stroke-width:2}
+.sc{fill:var(--coral);fill-opacity:.4;stroke:var(--ink);stroke-width:2}.st{fill:var(--yellow);stroke:var(--ink);stroke-width:2}.st2{fill:var(--teal);fill-opacity:.7;stroke:var(--ink);stroke-width:2}
+.tx{fill:var(--ink);font:600 15px 'Fredoka',sans-serif;text-anchor:middle}
+.lay{transition:opacity .4s}.lay.off{opacity:0;pointer-events:none}
+.sd{cursor:pointer}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Memahami Teorema Pythagoras</h1>
+<p class="sub">Media konsep Bab 2 untuk TP 1–2. Siswa menemukan sendiri hubungan antar sisi, lalu menggunakannya untuk menghitung sisi segitiga siku-siku. Matematika SMP Kelas 8.</p>
+<nav class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true" data-t="p1">TP 1 · Menemukan Teorema</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="p2">TP 2 · Menghitung Sisi</button>
+</nav>
+
+<!-- TP1 -->
+<section class="pane on" id="p1">
+  <div class="goal"><b>Tujuan:</b> menemukan dan menjelaskan hubungan a² + b² = c² pada segitiga siku-siku.</div>
+  <div class="card">
+    <div class="sh"><span class="n">1</span><h3>Amati: persegi di setiap sisi</h3></div>
+    <p>Di setiap sisi segitiga siku-siku dibuat persegi. Ubah panjang kedua sisi tegak, lalu tekan “Catat” untuk menyimpan pengamatanmu.</p>
+    <div class="sl"><label>Sisi tegak a <output id="oa">3</output><input type="range" id="xa" min="2" max="9" value="3"></label><label>Sisi tegak b <output id="ob">4</output><input type="range" id="xb" min="2" max="9" value="4"></label></div>
+    <svg id="svg1" viewBox="0 0 400 400" role="img" aria-label="Segitiga siku-siku dengan tiga persegi"></svg>
+    <div class="ex" id="ar1"></div>
+    <button class="btn" id="rec1">Catat pengamatan</button>
+    <table><thead><tr><th>a</th><th>b</th><th>Luas persegi a</th><th>Luas persegi b</th><th>Luas persegi besar</th></tr></thead><tbody id="t1"><tr><td colspan="5" class="muted">Belum ada catatan</td></tr></tbody></table>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">2</span><h3>Temukan polanya</h3></div>
+    <div id="m1"></div>
+    <div class="sum" id="s1" hidden>Luas persegi besar = luas persegi a + luas persegi b. Karena luas persegi = sisi × sisi, maka <b>a² + b² = c²</b>.</div>
+    <div id="ap1" hidden style="margin-top:14px"><p><b>Terapkan:</b> Sisi tegak sebuah segitiga siku-siku 6 dan 8. Berapa luas persegi pada sisi miringnya?</p>
+      <div class="row"><input type="number" id="q1" inputmode="numeric" aria-label="Jawaban"><button class="btn" id="bq1">Periksa</button></div><div class="fb" id="fq1" hidden></div></div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">3</span><h3>Buktikan dengan potongan</h3></div>
+    <p>Persegi besar berukuran (a + b) × (a + b). Ada dua cara menyusun 4 segitiga yang sama. Bandingkan kedua susunan.</p>
+    <div class="seg row" id="b3"><button data-m="A" aria-pressed="true">Susunan A</button><button data-m="B" aria-pressed="false">Susunan B</button></div>
+    <svg id="svg3" viewBox="0 0 400 380" role="img" aria-label="Pembuktian dengan potongan"></svg>
+    <div class="ex" id="cap3"></div>
+    <div class="sum" id="s3" hidden><b>Kesimpulan:</b> kedua susunan memakai 4 segitiga yang sama di dalam persegi yang sama. Maka sisanya harus sama luasnya: <b>c² = a² + b²</b>. Inilah Teorema Pythagoras: pada segitiga siku-siku, kuadrat sisi miring sama dengan jumlah kuadrat kedua sisi tegak.</div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">4</span><h3>Luruskan: apakah berlaku untuk semua segitiga?</h3></div>
+    <p>Sisi a = 3 dan b = 4 tetap. Ubah sudut di antaranya dan perhatikan luas persegi pada sisi ketiga (c²).</p>
+    <div class="sl"><label>Sudut antara a dan b <output id="ot">90°</output><input type="range" id="xt" min="40" max="140" step="5" value="90"></label></div>
+    <svg id="svg4" viewBox="0 0 260 170" role="img" aria-label="Segitiga dengan sudut yang bisa diubah"></svg>
+    <div class="ex" id="r4"></div>
+  </div>
+</section>
+
+<!-- TP2 -->
+<section class="pane" id="p2">
+  <div class="goal"><b>Tujuan:</b> mengenali sisi miring dan menghitung panjang sisi segitiga siku-siku dengan teorema Pythagoras.</div>
+  <div class="card">
+    <div class="sh"><span class="n">1</span><h3>Kenali sisi miring</h3></div>
+    <p>Ketuk sisi miring (<b>hipotenusa</b>). Posisi segitiganya berubah-ubah, jadi perhatikan sudut siku-sikunya (kotak kecil).</p>
+    <svg id="svg5" viewBox="0 0 320 280" role="img" aria-label="Segitiga siku-siku yang diputar"></svg>
+    <div class="fb" id="f5" hidden></div>
+    <div class="row"><button class="btn alt" id="nx5">Posisi lain</button></div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">2</span><h3>Eksperimen: cari sisi yang hilang</h3></div>
+    <div class="seg row" id="b6"><button data-m="h" aria-pressed="true">Mencari sisi miring</button><button data-m="l" aria-pressed="false">Mencari sisi tegak</button></div>
+    <div class="sl"><label><span id="l61">Sisi tegak 1</span> <output id="o61">3</output><input type="range" id="x61" min="1" max="12" value="3"></label><label><span id="l62">Sisi tegak 2</span> <output id="o62">4</output><input type="range" id="x62" min="1" max="12" value="4"></label></div>
+    <svg id="svg6" viewBox="0 0 300 220" role="img" aria-label="Segitiga dengan satu sisi yang dicari"></svg>
+    <div class="ex" id="r6"></div>
+    <p class="muted">Perhatikan: sisi miring dicari dengan <b>menjumlahkan</b> kuadrat, sisi tegak dicari dengan <b>mengurangkan</b> kuadrat.</p>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">3</span><h3>Tebak dan hitung</h3></div>
+    <p><b>A.</b> Sisi tegak 5 dan 12. Berapa panjang sisi miring?</p>
+    <div class="row"><input type="number" id="qa" inputmode="numeric" aria-label="A"><button class="btn" id="ba">Periksa</button></div><div class="fb" id="fa" hidden></div>
+    <p style="margin-top:14px"><b>B.</b> Sisi miring 10 dan satu sisi tegak 6. Berapa panjang sisi tegak yang lain?</p>
+    <div class="row"><input type="number" id="qb" inputmode="numeric" aria-label="B"><button class="btn" id="bb">Periksa</button></div><div class="fb" id="fb" hidden></div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">4</span><h3>Detektif: temukan langkah yang salah</h3></div>
+    <div id="d1"></div><div id="d2" style="margin-top:14px"></div><div id="d3" style="margin-top:14px"></div>
+    <div class="sum" id="s6" hidden><b>Langkah menghitung sisi:</b><br>1. Tentukan sisi miring (di depan sudut siku-siku, paling panjang).<br>2. Sisi miring dicari: c² = a² + b². Sisi tegak dicari: a² = c² − b².<br>3. Hitung hasilnya, lalu <b>akarkan</b> untuk mendapat panjang sisi.</div>
+  </div>
+</section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const say=(el,ok,h)=>{el.hidden=false;el.className='fb '+(ok?'ok':'no');el.innerHTML=h};
+const dec=x=>x.toFixed(2).replace('.',',');
+const pt=p=>p[0].toFixed(1)+','+p[1].toFixed(1);
+const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===t.dataset.t));
+  window.scrollTo({top:0});
+});
+function mc(id,q,opts,done,pre){
+  const c=$(id);
+  c.innerHTML=`<p>${q}</p><div class="opts">${opts.map((o,i)=>`<button class="opt" data-i="${i}">${o.t}</button>`).join('')}</div><div class="fb" hidden></div>`;
+  c.onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;const o=opts[+b.dataset.i],f=c.querySelector('.fb');
+    if(pre){const m=pre();if(m)return say(f,false,m)}
+    const w=typeof o.w==='function'?o.w():o.w;
+    if(o.ok){c.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add('good');say(f,true,w);done&&done()}
+    else{b.classList.add('bad');b.disabled=true;say(f,false,w)}};
+}
+function numq(inp,btn,fb,ans,hint,done){
+  $(btn).onclick=()=>{const f=$(fb);if(!$(inp).value)return say(f,false,'Tulis jawabanmu dulu.');
+    const v=+$(inp).value;if(v===ans.v){say(f,true,ans.w);done&&done()}else say(f,false,hint(v))};
+}
+
+/* ===== TP1 langkah 1 ===== */
+let rows=[];
+function fig1(){
+  const a=+$('#xa').value,b=+$('#xb').value;$('#oa').textContent=a;$('#ob').textContent=b;
+  const s=330/Math.max(2*b+a,2*a+b),cx=30+b*s,cy=30+(a+b)*s;
+  const A=[cx,cy-b*s],B=[cx+a*s,cy],n=[b*s,-a*s];
+  const H=[A,B,[B[0]+n[0],B[1]+n[1]],[A[0]+n[0],A[1]+n[1]]];
+  const gr=(x,y,k)=>{let d='';for(let i=1;i<k;i++)d+=`M${x+i*s} ${y}v${k*s}M${x} ${y+i*s}h${k*s}`;return `<path d="${d}" style="stroke:var(--ink);stroke-opacity:.28;fill:none"/>`};
+  const hc=[(H[0][0]+H[2][0])/2,(H[0][1]+H[2][1])/2];
+  $('#svg1').innerHTML=
+   `<rect class="sa" x="${cx}" y="${cy}" width="${a*s}" height="${a*s}"/>${gr(cx,cy,a)}
+    <rect class="sb" x="${cx-b*s}" y="${cy-b*s}" width="${b*s}" height="${b*s}"/>${gr(cx-b*s,cy-b*s,b)}
+    <polygon class="sc" points="${H.map(pt).join(' ')}"/>
+    <polygon class="st" points="${pt(A)} ${pt(B)} ${pt([cx,cy])}"/>
+    <path d="M${cx+10} ${cy}v-10h-10" fill="none" stroke="var(--ink)" stroke-width="2"/>
+    <text class="tx" x="${cx+a*s/2}" y="${cy+a*s/2+5}">a²</text>
+    <text class="tx" x="${cx-b*s/2}" y="${cy-b*s/2+5}">b²</text>
+    <text class="tx" x="${hc[0]}" y="${hc[1]+5}">c²</text>`;
+  $('#ar1').innerHTML=`Luas persegi a = ${a} × ${a} = <b>${a*a}</b><br>Luas persegi b = ${b} × ${b} = <b>${b*b}</b><br>Luas persegi besar (c²) = <b>${a*a+b*b}</b>`;
+}
+['xa','xb'].forEach(i=>$('#'+i).oninput=()=>{fig1();fig3()});
+$('#rec1').onclick=()=>{
+  const a=+$('#xa').value,b=+$('#xb').value;
+  if(!rows.some(r=>r[0]===a&&r[1]===b))rows.push([a,b]);
+  $('#t1').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[0]**2}</td><td>${r[1]**2}</td><td><b>${r[0]**2+r[1]**2}</b></td></tr>`).join('');
+};
+const wr=(sym,fn)=>()=>{const r=rows.find(x=>fn(x[0],x[1])!==x[0]**2+x[1]**2);return r?`Cek catatanmu: a = ${r[0]}, b = ${r[1]}. Rumus itu menghasilkan ${fn(r[0],r[1])}, tetapi luas persegi besar = ${r[0]**2+r[1]**2}.`:'Kebetulan cocok untuk data yang kamu catat. Tambah pengamatan dengan angka lain, lalu uji lagi.'};
+mc('#m1','Dari catatanmu (minimal 3), bagaimana hubungan luas persegi a, b, dan persegi besar?',[
+ {t:'Luas persegi besar = a + b',w:wr('+',(a,b)=>a+b)},
+ {t:'Luas persegi besar = luas persegi a + luas persegi b',ok:1,w:'<b>Cocok untuk semua catatanmu.</b> Luas persegi besar sama dengan jumlah luas kedua persegi lainnya.'},
+ {t:'Luas persegi besar = a × b',w:wr('×',(a,b)=>a*b)}],
+ ()=>{$('#s1').hidden=false;$('#ap1').hidden=false},
+ ()=>rows.length<3?`Catat dulu minimal 3 pengamatan yang berbeda (sekarang ${rows.length}).`:'');
+numq('#q1','#bq1','#fq1',{v:100,w:'<b>Tepat.</b> c² = 6² + 8² = 36 + 64 = 100.'},
+ v=>v===14?'6 + 8 = 14 menjumlahkan panjang sisi. Yang dijumlahkan adalah <b>luas persegi</b>: 6² + 8².':v===10?'10 adalah panjang sisi miringnya. Luas persegi = sisi × sisi, jadi 10 × 10 = 100.':'Belum tepat. Luas persegi besar = 6² + 8². Hitung kedua luas persegi lebih dulu.');
+
+/* ===== TP1 langkah 3: potongan ===== */
+let mode3='A',seen={A:1};
+function fig3(){
+  const a=+$('#xa').value,b=+$('#xb').value,S=a+b,t=320/S,x0=40,y0=20;
+  const P=(...v)=>v.map(([x,y])=>pt([x0+x*t,y0+y*t])).join(' ');
+  const tx=(x,y,l)=>`<text class="tx" x="${x0+x*t}" y="${y0+y*t+5}">${l}</text>`;
+  $('#svg3').innerHTML=
+  `<g class="lay ${mode3==='A'?'':'off'}">
+    <polygon class="sc" points="${P([a,0],[S,a],[b,S],[0,b])}"/>
+    <polygon class="st" points="${P([0,0],[a,0],[0,b])}"/><polygon class="st2" points="${P([S,0],[S,a],[a,0])}"/>
+    <polygon class="st" points="${P([S,S],[b,S],[S,a])}"/><polygon class="st2" points="${P([0,S],[0,b],[b,S])}"/>${tx(S/2,S/2,'c²')}</g>
+   <g class="lay ${mode3==='B'?'':'off'}">
+    <rect class="sb" x="${x0}" y="${y0}" width="${b*t}" height="${b*t}"/><rect class="sa" x="${x0+b*t}" y="${y0+b*t}" width="${a*t}" height="${a*t}"/>
+    <polygon class="st" points="${P([b,0],[S,0],[S,b])}"/><polygon class="st2" points="${P([b,0],[S,b],[b,b])}"/>
+    <polygon class="st" points="${P([0,b],[b,b],[b,S])}"/><polygon class="st2" points="${P([0,b],[b,S],[0,S])}"/>${tx(b/2,b/2,'b²')}${tx(b+a/2,b+a/2,'a²')}</g>
+   <rect x="${x0}" y="${y0}" width="${S*t}" height="${S*t}" fill="none" stroke="var(--ink)" stroke-width="3"/>`;
+  $('#cap3').innerHTML=mode3==='A'?`Susunan A: persegi besar (${S} × ${S} = ${S*S}) = 4 segitiga + persegi <b>c²</b>.`:`Susunan B: persegi besar (${S} × ${S} = ${S*S}) = 4 segitiga + persegi <b>a²</b> + persegi <b>b²</b>.`;
+}
+$('#b3').onclick=e=>{const b=e.target.closest('button');if(!b)return;mode3=b.dataset.m;seen[mode3]=1;
+  document.querySelectorAll('#b3 button').forEach(x=>x.setAttribute('aria-pressed',x===b));fig3();if(seen.A&&seen.B)$('#s3').hidden=false};
+
+/* ===== TP1 langkah 4: sudut ===== */
+function fig4(){
+  const th=+$('#xt').value,r=th*Math.PI/180,u=36,C=[120,140],B=[C[0]+3*u,C[1]],A=[C[0]+4*u*Math.cos(r),C[1]-4*u*Math.sin(r)];
+  const c2=25-24*Math.cos(r),d=Math.abs(c2-25)<.05;
+  $('#ot').textContent=th+'°';
+  $('#svg4').innerHTML=`<polygon class="st" points="${pt(A)} ${pt(B)} ${pt(C)}"/><text class="tx" x="${C[0]+4}" y="${C[1]+22}">${th}°</text>`;
+  $('#r4').innerHTML=`a² + b² = 9 + 16 = <b>25</b><br>c² = <b>${dec(c2)}</b><br>${d?'<b>Sama.</b> Segitiga siku-siku: teorema berlaku.':c2<25?'c² <b>lebih kecil</b> dari a² + b² (sudut lancip). Teorema tidak berlaku.':'c² <b>lebih besar</b> dari a² + b² (sudut tumpul). Teorema tidak berlaku.'}`;
+}
+$('#xt').oninput=fig4;
+fig1();fig3();fig4();
+
+/* ===== TP2 langkah 1: sisi miring ===== */
+const TRI=[[3,4],[5,12],[6,8],[8,15],[9,12],[7,24]];
+let ok5=0;
+function tri5(){
+  const [p,q]=TRI[rnd(0,TRI.length-1)],m=Math.max(p,q),la=p/m*130,lb=q/m*130,rot=rnd(0,359),f=rnd(0,1)?-1:1;
+  const C=[0,0],B=[la,0],A=[0,-lb],g=[la/3,-lb/3];
+  const ln=(P,Q,k)=>`<line x1="${P[0]}" y1="${P[1]}" x2="${Q[0]}" y2="${Q[1]}" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/><line class="sd" data-s="${k}" x1="${P[0]}" y1="${P[1]}" x2="${Q[0]}" y2="${Q[1]}" stroke="transparent" stroke-width="30"/>`;
+  $('#svg5').innerHTML=`<g transform="translate(160 140) rotate(${rot}) scale(${f} 1) translate(${-g[0]} ${-g[1]})"><polygon points="${[C,B,A].map(pt).join(' ')}" fill="var(--yellow)" fill-opacity=".35"/>${ln(C,B,'a')}${ln(C,A,'b')}${ln(A,B,'c')}<path d="M10 0v-10h-10" fill="none" stroke="var(--ink)" stroke-width="2"/></g>`;
+  $('#f5').hidden=true;
+}
+$('#svg5').onclick=e=>{
+  const s=e.target.dataset.s;if(!s)return;const f=$('#f5');
+  if(s==='c'){ok5++;say(f,true,`<b>Tepat.</b> Sisi miring berhadapan dengan sudut siku-siku dan selalu yang paling panjang, apa pun posisi segitiganya.${ok5>=3?' Kamu sudah mengenalinya dengan baik.':''}`)}
+  else say(f,false,'Itu sisi tegak (sisi yang membentuk sudut siku-siku). Cari sisi yang <b>berhadapan</b> dengan kotak kecil itu.');
+};
+$('#nx5').onclick=tri5;tri5();
+
+/* ===== TP2 langkah 2: kalkulator ===== */
+let m6='h';
+function root(n){const r=Math.sqrt(n);if(Number.isInteger(r))return `√${n} = <b>${r}</b>`;const k=Math.floor(r);return `√${n} ≈ <b>${dec(r)}</b> (bukan bilangan bulat: ${k}² = ${k*k} &lt; ${n} &lt; ${(k+1)**2})`}
+function r6(){
+  let x1=+$('#x61').value,x2=+$('#x62').value;
+  if(m6==='l'){$('#x62').max=x1-1;if(x2>x1-1){x2=x1-1;$('#x62').value=x2}}
+  $('#o61').textContent=x1;$('#o62').textContent=x2;
+  let la,lb,lab,res;
+  if(m6==='h'){const n=x1*x1+x2*x2;la=x1;lb=x2;lab=[x1,x2,'?'];
+    res=`c² = a² + b²<br>c² = ${x1}² + ${x2}² = ${x1*x1} + ${x2*x2} = ${n}<br>c = ${root(n)}`}
+  else{const n=x1*x1-x2*x2;la=x2;lb=Math.sqrt(n);lab=['?',x2,x1];
+    res=`a² = c² − b²<br>a² = ${x1}² − ${x2}² = ${x1*x1} − ${x2*x2} = ${n}<br>a = ${root(n)}`}
+  const k=150/Math.max(la,lb),w=la*k,h=lb*k,C=[60,190],B=[60+w,190],A=[60,190-h];
+  $('#svg6').innerHTML=`<polygon class="st" points="${[A,B,C].map(pt).join(' ')}"/><path d="M${C[0]+10} ${C[1]}v-10h-10" fill="none" stroke="var(--ink)" stroke-width="2"/>
+   <text class="tx" x="${C[0]+w/2}" y="${C[1]+20}">${m6==='h'?lab[0]:lab[1]}</text><text class="tx" x="${C[0]-18}" y="${C[1]-h/2}">${m6==='h'?lab[1]:lab[0]}</text>
+   <text class="tx" x="${(A[0]+B[0])/2+16}" y="${(A[1]+B[1])/2-8}" style="fill:var(--coral)">${lab[2]}</text>`;
+  $('#r6').innerHTML=res;
+}
+['x61','x62'].forEach(i=>$('#'+i).oninput=r6);
+$('#x61').addEventListener('input',()=>{});
+$('#b6').onclick=e=>{const b=e.target.closest('button');if(!b)return;m6=b.dataset.m;
+  document.querySelectorAll('#b6 button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  if(m6==='h'){$('#l61').textContent='Sisi tegak 1';$('#l62').textContent='Sisi tegak 2';$('#x61').min=1;$('#x61').max=12;$('#x61').value=3;$('#x62').min=1;$('#x62').max=12;$('#x62').value=4}
+  else{$('#l61').textContent='Sisi miring (c)';$('#l62').textContent='Sisi tegak yang diketahui (b)';$('#x61').min=2;$('#x61').max=15;$('#x61').value=5;$('#x62').min=1;$('#x62').max=4;$('#x62').value=3}
+  r6()};
+r6();
+
+/* ===== TP2 langkah 3 ===== */
+numq('#qa','#ba','#fa',{v:13,w:'<b>Tepat.</b> c² = 5² + 12² = 25 + 144 = 169, jadi c = √169 = 13.'},
+ v=>v===17?'5 + 12 = 17 menjumlahkan panjang sisi. Kuadratkan dulu: c² = 5² + 12².':v===169?'169 adalah c². Panjang sisinya diperoleh dengan mengakarkan 169.':'Belum tepat. Hitung c² = 5² + 12², lalu akarkan hasilnya.');
+numq('#qb','#bb','#fb',{v:8,w:'<b>Tepat.</b> a² = 10² − 6² = 100 − 36 = 64, jadi a = √64 = 8.'},
+ v=>v===4?'10 − 6 = 4 mengurangkan panjang sisi. Kuadratkan dulu: a² = 10² − 6².':v===64?'64 adalah a². Panjang sisinya diperoleh dengan mengakarkan 64.':v===136||v===11?'Sisi tegak dicari dengan <b>mengurangkan</b> kuadrat: a² = c² − b², bukan ditambah.':'Belum tepat. Karena yang dicari sisi tegak, gunakan a² = 10² − 6², lalu akarkan.');
+
+/* ===== TP2 langkah 4: detektif ===== */
+let dn=0;const dd=()=>{if(++dn===3)$('#s6').hidden=false};
+function det(id,title,lines,err,fix){
+  mc(id,`${title}<div class="ex">${lines.join('<br>')}</div>Di baris mana kesalahannya?`,
+    lines.map((l,i)=>({t:l,ok:i===err,w:i===err?`<b>Ketemu.</b> ${fix}`:'Baris ini sudah benar. Periksa baris lain.'})),dd);
+}
+det('#d1','Kasus 1: sisi tegak 6 dan 8, cari sisi miring.',['c² = 6² + 8²','c = 6 + 8','c = 14'],1,'Setelah c² = 36 + 64 = 100, sisi miring diperoleh dengan <b>mengakarkan</b>: c = √100 = 10. Panjang sisi tidak dijumlahkan langsung.');
+det('#d2','Kasus 2: sisi miring 13 dan sisi tegak 5, cari sisi tegak lain.',['x² = 13² + 5²','x² = 169 + 25','x² = 194'],0,'Yang dicari sisi tegak, jadi kuadrat dikurangkan: x² = 13² − 5² = 169 − 25 = 144, sehingga x = 12.');
+det('#d3','Kasus 3: sisi tegak 9 dan 12, cari sisi miring.',['c² = 9² + 12²','c² = 81 + 144 = 225','c = 225'],2,'225 masih c². Panjang sisi miring adalah akarnya: c = √225 = 15.');
+</script>
+</body>
+</html>

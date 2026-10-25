@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Media Konsep Bab 3 – Persamaan Linear Satu Variabel (TP 1–3)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f8fafd;--grid:rgba(29,53,87,.08);--ink:#1d3557;--muted:#586a87;--card:#fff;--line:#cdd8ea;--blue:#2f6bff;--yellow:#ffd23f;--coral:#ff5d73;--teal:#13a08f;--soft:#eaf0fb;--sh:#1d3557;--onb:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e1a2b;--grid:rgba(255,255,255,.055);--ink:#eaf1ff;--muted:#9fb1cc;--card:#16263d;--line:#2c415f;--blue:#6c93ff;--coral:#ff7a8c;--teal:#3ccdb9;--soft:#1d3150;--sh:#050b14;--onb:#0e1a2b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0e1a2b;--grid:rgba(255,255,255,.055);--ink:#eaf1ff;--muted:#9fb1cc;--card:#16263d;--line:#2c415f;--blue:#6c93ff;--coral:#ff7a8c;--teal:#3ccdb9;--soft:#1d3150;--sh:#050b14;--onb:#0e1a2b;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;font:16px/1.65 'Lexend',system-ui,sans-serif}
+h1,h2,h3{font-family:'Fredoka','Lexend',sans-serif;font-weight:600;line-height:1.15;margin:0 0 .4rem}
+h1{font-size:clamp(1.9rem,6vw,2.8rem)}h3{font-size:1.15rem;margin:0}p{margin:0 0 .7em}
+.wrap{max-width:820px;margin:0 auto;padding:16px 16px 48px}
+button,select,input{font:inherit;color:inherit}button{cursor:pointer}:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.muted{color:var(--muted)}.sub{color:var(--muted);margin:0 0 6px}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:8px;overflow-x:auto;padding:10px 0;margin:8px 0 14px;background:linear-gradient(var(--paper) 80%,transparent);scrollbar-width:none}
+.tab{flex:0 0 auto;border:2px solid var(--ink);background:var(--card);border-radius:999px;padding:7px 16px;font-weight:500;font-size:.92rem;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.pane{display:none}.pane.on{display:block}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:16px;padding:18px;box-shadow:4px 4px 0 var(--sh);margin-bottom:16px}
+.goal{border:2px dashed var(--ink);border-radius:14px;padding:10px 16px;margin-bottom:16px;background:color-mix(in srgb,var(--yellow) 25%,var(--card))}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--yellow);color:#1d3557;border:2px solid var(--ink);font:600 1rem 'Fredoka',sans-serif;flex:0 0 30px}
+.btn{display:inline-block;border:2px solid var(--ink);background:var(--yellow);color:#1d3557;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;padding:7px 18px;border-radius:12px;box-shadow:3px 3px 0 var(--sh)}
+.btn:active{transform:translate(3px,3px);box-shadow:none}.btn.alt{background:var(--card);color:var(--ink)}.btn.sm{padding:5px 12px;font-size:.95rem}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.seg button{border:2px solid var(--ink);background:var(--card);border-radius:10px;padding:5px 14px;font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--blue);color:var(--onb)}
+.ex{background:var(--soft);border-radius:10px;padding:10px 14px;margin:.5rem 0;overflow-x:auto;line-height:1.9}
+.eqn{font:600 1.6rem 'Fredoka',sans-serif;color:var(--blue)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;margin:8px 0}
+th,td{border:2px solid var(--line);padding:4px 6px;text-align:center}th{background:var(--soft);font-weight:500}tr.hl td{background:color-mix(in srgb,var(--teal) 30%,var(--card))}
+.sl{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:8px 0}
+.sl label{display:flex;flex-direction:column;font-size:.9rem}.sl output{font:600 1.1rem 'Fredoka',sans-serif}
+input[type=range]{width:100%;accent-color:var(--blue)}
+input[type=number],select{border:2px solid var(--ink);border-radius:10px;background:var(--card);padding:5px 10px;max-width:100%}
+input[type=number]{width:110px}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:8px 0}
+.opt{border:2px solid var(--ink);background:var(--card);border-radius:12px;padding:9px 14px;font-weight:500;text-align:left;box-shadow:3px 3px 0 var(--sh)}
+.opt:not(:disabled):hover{background:var(--soft)}.opt.good{background:var(--teal);color:#fff}.opt.bad{background:var(--coral);color:#fff}.opt:disabled{cursor:default}
+.fb{margin-top:10px;border:2px solid var(--ink);border-radius:12px;padding:9px 14px}
+.fb.ok{background:color-mix(in srgb,var(--teal) 22%,var(--card))}.fb.no{background:color-mix(in srgb,var(--coral) 22%,var(--card))}
+.sum{margin-top:12px;border:2px solid var(--ink);border-left-width:8px;border-radius:12px;padding:10px 14px;background:color-mix(in srgb,var(--blue) 12%,var(--card))}
+svg{display:block;width:100%;max-width:400px;margin:8px auto;height:auto}
+.tx{fill:var(--ink);font:600 13px 'Fredoka',sans-serif;text-anchor:middle}
+.ln{border:2px solid var(--ink);background:var(--card);border-radius:10px;padding:6px 14px;margin:6px 0;font-size:1.15rem}
+.ln i{font:500 .82rem 'Lexend',sans-serif;color:var(--muted);font-style:normal;float:right}
+.bar{height:22px;border:2px solid var(--ink);border-radius:6px;margin:4px 0;color:#1d3557;font:600 .8rem 'Fredoka',sans-serif;padding:0 8px;display:flex;align-items:center;white-space:nowrap}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Memahami Persamaan Linear Satu Variabel</h1>
+<p class="sub">Media konsep Bab 3, Batch 1 (TP 1–3). Siswa menemukan arti persamaan, cara menyelesaikannya, dan cara memodelkan cerita. Matematika SMP Kelas 8.</p>
+<nav class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true" data-t="p1">TP 1 · Timbangan Seimbang</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="p2">TP 2 · Jaga Keseimbangan</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="p3">TP 3 · Tabungan Dua Sahabat</button>
+</nav>
+
+<!-- TP1 -->
+<section class="pane on" id="p1">
+  <div class="goal"><b>Tujuan:</b> menjelaskan persamaan sebagai kesamaan dua ruas, variabel sebagai bilangan yang belum diketahui, dan penyelesaian sebagai nilai yang membuat kedua ruas sama.</div>
+  <div class="card">
+    <div class="sh"><span class="n">1</span><h3>Amati: timbangan dengan kotak misteri</h3></div>
+    <p>Kotak biru berisi beban yang belum diketahui, diberi nama <b>x</b>. Kotak kuning adalah beban 1 satuan. Geser nilai x dan amati timbangannya.</p>
+    <div class="seg row" id="pr1"><button data-v="1,3,8" aria-pressed="true">x + 3 = 8</button><button data-v="2,1,11" aria-pressed="false">2x + 1 = 11</button><button data-v="3,0,12" aria-pressed="false">3x = 12</button></div>
+    <div class="sl"><label>Coba nilai x <output id="ox">0</output><input type="range" id="xx" min="0" max="12" value="0"></label></div>
+    <svg id="svg1" viewBox="0 0 300 200" role="img" aria-label="Timbangan"></svg>
+    <div class="ex" id="r1"></div>
+    <button class="btn" id="rec1">Catat percobaan</button>
+    <table><thead><tr><th>x</th><th>Ruas kiri</th><th>Ruas kanan</th><th>Keadaan</th></tr></thead><tbody id="t1"><tr><td colspan="4" class="muted">Belum ada catatan</td></tr></tbody></table>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">2</span><h3>Temukan dan uji</h3></div>
+    <div id="m1"></div>
+    <p style="margin-top:14px">Persamaan 4x + 2 = 18. Berapa nilai x yang membuat kedua ruas sama?</p>
+    <div class="row"><input type="number" id="q1" inputmode="numeric" aria-label="x"><button class="btn" id="b1q">Periksa</button></div><div class="fb" id="f1q" hidden></div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">3</span><h3>Simpulkan</h3></div>
+    <p>Persamaan menyatakan bahwa kedua ruas
+      <select id="s11"><option value="">pilih…</option><option value="1">bernilai sama</option><option value="0">dijumlahkan</option><option value="0">dikalikan</option></select>.
+      Variabel x adalah
+      <select id="s12"><option value="">pilih…</option><option value="1">bilangan yang belum diketahui</option><option value="0">selalu bernilai 1</option></select>.
+      Penyelesaiannya adalah nilai x yang membuat
+      <select id="s13"><option value="">pilih…</option><option value="1">kedua ruas sama</option><option value="0">x = 0</option><option value="0">ruas kiri lebih besar</option></select>.</p>
+    <button class="btn" id="b13">Periksa</button><div class="fb" id="f13" hidden></div>
+    <div class="sum" id="sm1" hidden>Persamaan linear satu variabel adalah kalimat terbuka dengan tanda “=” yang memuat satu variabel berpangkat satu. Penyelesaiannya adalah nilai variabel yang membuat kedua ruas bernilai sama. Cara mengujinya: substitusikan nilai itu ke kedua ruas.</div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">4</span><h3>Luruskan: mana yang persamaan?</h3></div>
+    <div id="m14"></div>
+  </div>
+</section>
+
+<!-- TP2 -->
+<section class="pane" id="p2">
+  <div class="goal"><b>Tujuan:</b> menyelesaikan persamaan dengan memberi operasi yang sama pada kedua ruas dan menjelaskan alasannya.</div>
+  <div class="card">
+    <div class="sh"><span class="n">1</span><h3>Eksperimen: jaga timbangan tetap seimbang</h3></div>
+    <p>Pilih persamaan, lalu beri operasi yang <b>sama</b> pada kedua ruas sampai x berdiri sendiri.</p>
+    <div class="seg row" id="eqs"></div>
+    <div id="hist"></div>
+    <div class="row">Angka n: <input type="number" id="nn" min="1" max="20" value="2">
+      <button class="btn alt sm" data-k="a">+ n</button><button class="btn alt sm" data-k="b">− n</button><button class="btn alt sm" data-k="xa">+ n·x</button><button class="btn alt sm" data-k="xb">− n·x</button><button class="btn alt sm" data-k="m">× n</button><button class="btn alt sm" data-k="d">÷ n</button></div>
+    <div class="row"><button class="btn sm" id="und">Urungkan</button><button class="btn alt sm" id="rst">Ulang soal</button></div>
+    <div class="fb" id="f2" hidden></div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">2</span><h3>Simpulkan</h3></div>
+    <p>Persamaan tetap seimbang jika kedua ruas diberi operasi yang
+      <select id="s21"><option value="">pilih…</option><option value="1">sama</option><option value="0">berbeda</option></select>.
+      Untuk menghilangkan + 5 di ruas kiri, kedua ruas
+      <select id="s22"><option value="">pilih…</option><option value="1">dikurangi 5</option><option value="0">ditambah 5</option><option value="0">dikali 5</option></select>.</p>
+    <button class="btn" id="b21">Periksa</button><div class="fb" id="f21" hidden></div>
+    <div class="sum" id="sm2" hidden>Kedua ruas boleh ditambah, dikurangi, dikali, atau dibagi dengan bilangan yang sama (bukan nol), dan persamaan tetap benar. Gunakan operasi lawan: lawan dari + adalah −, lawan dari × adalah ÷.</div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">3</span><h3>Detektif: temukan langkah yang salah</h3></div>
+    <div id="d1"></div><div id="d2" style="margin-top:14px"></div><div id="d3" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<!-- TP3 -->
+<section class="pane" id="p3">
+  <div class="goal"><b>Tujuan:</b> mengubah masalah cerita menjadi persamaan linear satu variabel, menyelesaikannya, dan menafsirkan hasilnya.</div>
+  <div class="card">
+    <div class="sh"><span class="n">1</span><h3>Amati: tabungan Joko dan Rizka</h3></div>
+    <p>Joko punya Rp50.000 dan menabung Rp5.000 tiap minggu. Rizka punya Rp20.000 dan menabung Rp10.000 tiap minggu. Geser minggunya.</p>
+    <div class="sl"><label>Minggu ke-w <output id="ow">0</output><input type="range" id="xw" min="0" max="10" value="0"></label></div>
+    <div class="bar" id="bj" style="background:var(--yellow)"></div><div class="bar" id="br" style="background:var(--teal);color:#fff"></div>
+    <table><thead><tr><th>Minggu</th><th>Joko (ribu Rp)</th><th>Rizka (ribu Rp)</th></tr></thead><tbody id="t3"></tbody></table>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">2</span><h3>Modelkan menjadi persamaan</h3></div>
+    <div id="m3"></div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">3</span><h3>Selesaikan dan tafsirkan</h3></div>
+    <p><b>A.</b> Pada minggu keberapa saldo mereka sama?</p>
+    <div class="row"><input type="number" id="qa" inputmode="numeric" aria-label="A"><button class="btn" id="ba">Periksa</button></div><div class="fb" id="fa" hidden></div>
+    <p style="margin-top:14px"><b>B.</b> Berapa saldo mereka saat itu (dalam ribu rupiah)?</p>
+    <div class="row"><input type="number" id="qb" inputmode="numeric" aria-label="B"><button class="btn" id="bb">Periksa</button></div><div class="fb" id="fb" hidden></div>
+  </div>
+  <div class="card">
+    <div class="sh"><span class="n">4</span><h3>Terapkan pada masalah baru</h3></div>
+    <p>Taksi A: tarif buka Rp10.000 ditambah Rp4.000 per km. Taksi B: tarif buka Rp4.000 ditambah Rp6.000 per km. Kita ingin tahu jarak (k) saat ongkosnya sama.</p>
+    <div id="m4"></div>
+    <p style="margin-top:14px">Pada jarak berapa km ongkos kedua taksi sama?</p>
+    <div class="row"><input type="number" id="qk" inputmode="numeric" aria-label="k"><button class="btn" id="bk">Periksa</button></div><div class="fb" id="fk" hidden></div>
+    <div class="sum" id="sm3" hidden><b>Langkah memodelkan cerita:</b><br>1. Tentukan apa yang dicari, lalu beri nama variabel.<br>2. Tulis ekspresi untuk tiap pihak: nilai awal + (laju × variabel).<br>3. Samakan kedua ekspresi, lalu selesaikan dengan operasi yang sama di kedua ruas.<br>4. Uji hasilnya, lalu jawab sesuai pertanyaan dengan satuannya.</div>
+  </div>
+</section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),M='\u2212';
+const say=(el,ok,h)=>{el.hidden=false;el.className='fb '+(ok?'ok':'no');el.innerHTML=h};
+const pt=p=>p[0].toFixed(1)+','+p[1].toFixed(1);
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===t.dataset.t));
+  window.scrollTo({top:0});
+});
+function mc(id,q,opts,done,pre){
+  const c=$(id);
+  c.innerHTML=`<p>${q}</p><div class="opts">${opts.map((o,i)=>`<button class="opt" data-i="${i}">${o.t}</button>`).join('')}</div><div class="fb" hidden></div>`;
+  c.onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;const o=opts[+b.dataset.i],f=c.querySelector('.fb');
+    if(pre){const m=pre();if(m)return say(f,false,m)}
+    if(o.ok){c.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add('good');say(f,true,o.w);done&&done()}
+    else{b.classList.add('bad');b.disabled=true;say(f,false,o.w)}};
+}
+function selchk(btn,sels,fb,sum,msg){
+  $(btn).onclick=()=>{const v=sels.map(s=>$(s).value),f=$(fb);
+    if(v.includes(''))return say(f,false,'Lengkapi semua pilihan dulu.');
+    if(v.every(x=>x==='1')){say(f,true,'<b>Tepat.</b> Kamu sudah menyimpulkannya sendiri.');$(sum).hidden=false}else say(f,false,msg)};
+}
+function numq(inp,btn,fb,ans,hint,done){
+  $(btn).onclick=()=>{const f=$(fb);if(!$(inp).value)return say(f,false,'Tulis jawabanmu dulu.');
+    const v=+$(inp).value;if([].concat(ans.v).includes(v)){say(f,true,ans.w);done&&done()}else say(f,false,hint(v))};
+}
+
+/* ===== TP1 ===== */
+let P1={m:1,a:3,b:8},rows1=[];
+function pile(cx,py,items){
+  let x=0,row=0,out='';const W=104;
+  items.forEach(it=>{const bx=it==='x',w=bx?28:16,h=bx?22:16;if(x+w>W){x=0;row++}
+    out+=`<rect x="${cx-W/2+x}" y="${py-row*24-h-2}" width="${w}" height="${h}" rx="4" fill="${bx?'var(--blue)':'var(--yellow)'}" stroke="var(--ink)" stroke-width="2"/>${bx?`<text class="tx" style="fill:#fff" x="${cx-W/2+x+w/2}" y="${py-row*24-8}">x</text>`:''}`;x+=w+4});
+  return out;
+}
+function bal(){
+  const {m,a,b}=P1,x=+$('#xx').value;$('#ox').textContent=x;
+  const L=m*x+a,R=b,th=Math.max(-14,Math.min(14,(R-L)*2.5)),r=th*Math.PI/180,c=Math.cos(r),s=Math.sin(r);
+  const lf=[150-110*c,60-110*s],rt=[150+110*c,60+110*s],pl=lf[1]+75,pr=rt[1]+75;
+  const pan=(e,py)=>`<polyline points="${pt(e)} ${e[0]-52},${py} ${e[0]+52},${py} ${pt(e)}" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="${e[0]-56}" y="${py}" width="112" height="6" rx="3" fill="var(--ink)"/>`;
+  $('#svg1').innerHTML=`<polygon points="150,60 128,190 172,190" fill="var(--soft)" stroke="var(--ink)" stroke-width="3"/>
+   <line x1="${lf[0]}" x2="${rt[0]}" y1="${lf[1]}" y2="${rt[1]}" stroke="var(--ink)" stroke-width="6" stroke-linecap="round"/><circle cx="150" cy="60" r="7" fill="var(--coral)"/>
+   ${pan(lf,pl)}${pan(rt,pr)}${pile(lf[0],pl,[...Array(m).fill('x'),...Array(a).fill('u')])}${pile(rt[0],pr,Array(b).fill('u'))}`.replace(/x1="([^"]+)" x2="([^"]+)"/,(_,p,q)=>`x1="${p.split(',')[0]}" x2="${q.split(',')[0]}"`);
+  const lt=`${m>1?m:''}x${a?' + '+a:''}`;
+  $('#r1').innerHTML=`<span class="eqn">${lt} = ${b}</span><br>Ruas kiri: ${m>1?m+' × ':''}${x}${a?' + '+a:''} = <b>${L}</b>, ruas kanan = <b>${R}</b><br>${L===R?'<b>Seimbang.</b> Kedua ruas sama.':L>R?'Miring ke kiri: ruas kiri lebih berat.':'Miring ke kanan: ruas kanan lebih berat.'}`;
+}
+$('#xx').oninput=bal;
+$('#pr1').onclick=e=>{const b=e.target.closest('button');if(!b)return;const [m,a,bb]=b.dataset.v.split(',').map(Number);P1={m,a,b:bb};rows1=[];$('#xx').value=0;
+  document.querySelectorAll('#pr1 button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('#t1').innerHTML='<tr><td colspan="4" class="muted">Belum ada catatan</td></tr>';bal()};
+$('#rec1').onclick=()=>{const x=+$('#xx').value,L=P1.m*x+P1.a;if(!rows1.some(r=>r[0]===x))rows1.push([x,L,P1.b]);
+  $('#t1').innerHTML=rows1.map(r=>`<tr class="${r[1]===r[2]?'hl':''}"><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[1]===r[2]?'seimbang':r[1]>r[2]?'kiri berat':'kanan berat'}</td></tr>`).join('')};
+mc('#m1','Dari catatanmu (minimal 3), timbangan seimbang tepat ketika …',[
+ {t:'ruas kiri = ruas kanan',ok:1,w:'<b>Tepat.</b> Nilai x yang membuat kedua ruas sama disebut penyelesaian persamaan.'},
+ {t:'ruas kiri lebih besar dari ruas kanan',w:'Belum tepat. Lihat tabel: saat ruas kiri lebih besar, timbangan miring ke kiri.'},
+ {t:'x = 0',w:'Belum tepat. Lihat tabel: saat x = 0 timbangan tidak seimbang.'}],null,
+ ()=>rows1.length<3?`Catat dulu minimal 3 percobaan (sekarang ${rows1.length}).`:'');
+numq('#q1','#b1q','#f1q',{v:4,w:'<b>Tepat.</b> Uji: 4(4) + 2 = 16 + 2 = 18, sama dengan ruas kanan.'},
+ v=>`Uji nilai itu: 4(${v}) + 2 = ${4*v+2}, sedangkan ruas kanan 18. Kedua ruas ${4*v+2>18?'belum sama (kiri terlalu besar)':'belum sama (kiri terlalu kecil)'}. Coba nilai lain.`);
+selchk('#b13',['#s11','#s12','#s13'],'#f13','#sm1','Belum tepat. Ingat timbangan: persamaan berarti kedua ruas bernilai sama, x adalah beban yang belum diketahui, dan penyelesaian membuat timbangan seimbang.');
+mc('#m14','Manakah yang merupakan <b>persamaan</b>?',[
+ {t:'2x + 5',w:'Ini hanya ekspresi, tidak ada tanda “=” yang menyatakan kesamaan dua ruas.'},
+ {t:'2x + 5 = 11',ok:1,w:'<b>Tepat.</b> Ada tanda “=” dan variabel x. Penyelesaiannya x = 3 (2 × 3 + 5 = 11).'},
+ {t:'2x + 5 &gt; 11',w:'Ini pertidaksamaan, karena memakai tanda “&gt;”. Pertidaksamaan dipelajari di TP 4–6.'}]);
+bal();
+
+/* ===== TP2 ===== */
+const EQS=[[2,3,0,11],[3,-4,0,8],[5,2,3,10],[4,-7,1,5]];
+let st=[],eq0=null;
+const sd=(c,k)=>{const xs=c===0?'':c===1?'x':c===-1?M+'x':(c<0?M+(-c):c)+'x';if(!xs)return String(k<0?M+(-k):k);return k===0?xs:`${xs} ${k<0?M:'+'} ${Math.abs(k)}`};
+const es=e=>`${sd(e[0],e[1])} = ${sd(e[2],e[3])}`;
+function newEq(i){eq0=EQS[i].slice();st=[{e:eq0.slice(),op:'Persamaan awal'}];$('#f2').hidden=true;drawH();
+  document.querySelectorAll('#eqs button').forEach((b,j)=>b.setAttribute('aria-pressed',j===i))}
+function drawH(){$('#hist').innerHTML=st.map(s=>`<div class="ln">${es(s.e)}<i>${s.op}</i></div>`).join('')}
+$('#eqs').innerHTML=EQS.map((e,i)=>`<button data-i="${i}">${es(e)}</button>`).join('');
+$('#eqs').onclick=e=>{const b=e.target.closest('button');if(b)newEq(+b.dataset.i)};
+document.querySelector('#p2 .row:nth-of-type(2)');
+document.querySelectorAll('#p2 [data-k]').forEach(b=>b.onclick=()=>{
+  const n=Math.max(1,Math.min(20,Math.round(+$('#nn').value)||2)),k=b.dataset.k,[p,q,r,s]=st[st.length-1].e,f=$('#f2');let e,op;
+  if(k==='a'){e=[p,q+n,r,s+n];op=`+ ${n} di kedua ruas`}
+  else if(k==='b'){e=[p,q-n,r,s-n];op=`${M} ${n} di kedua ruas`}
+  else if(k==='xa'){e=[p+n,q,r+n,s];op=`+ ${n}x di kedua ruas`}
+  else if(k==='xb'){e=[p-n,q,r-n,s];op=`${M} ${n}x di kedua ruas`}
+  else if(k==='m'){e=[p*n,q*n,r*n,s*n];op=`× ${n} di kedua ruas`}
+  else{if(![p,q,r,s].every(v=>v%n===0))return say(f,false,`Tidak semua suku habis dibagi ${n}, sehingga muncul pecahan. Coba operasi lain dulu.`);e=[p/n,q/n,r/n,s/n];op=`÷ ${n} di kedua ruas`}
+  st.push({e,op});drawH();
+  const [P,Q,R,S]=e,sol=(P===1&&Q===0&&R===0)?S:(P===0&&R===1&&S===0)?Q:null;
+  if(sol!==null){const [a,b,c,d]=eq0;say(f,true,`<b>Selesai: x = ${sol}.</b> Uji pada persamaan awal: ruas kiri = ${a}(${sol}) ${b<0?M:'+'} ${Math.abs(b)} = ${a*sol+b}, ruas kanan = ${c}(${sol}) ${d<0?M:'+'} ${Math.abs(d)} = ${c*sol+d}. Keduanya sama.`)}
+  else say(f,true,'Kedua ruas diberi operasi yang sama, jadi persamaan tetap seimbang. Lanjutkan sampai x sendirian.');
+});
+$('#und').onclick=()=>{if(st.length>1){st.pop();drawH();$('#f2').hidden=true}};
+$('#rst').onclick=()=>{const i=[...document.querySelectorAll('#eqs button')].findIndex(b=>b.getAttribute('aria-pressed')==='true');newEq(i)};
+selchk('#b21',['#s21','#s22'],'#f21','#sm2','Belum tepat. Bayangkan timbangan: agar tetap seimbang, perlakuan di kedua sisi harus sama. Untuk meniadakan + 5, gunakan operasi lawannya, yaitu dikurangi 5.');
+function det(id,t,lines,err,fix){mc(id,`${t}<div class="ex">${lines.join('<br>')}</div>Di baris mana kesalahannya?`,
+  lines.map((l,i)=>({t:l,ok:i===err,w:i===err?`<b>Ketemu.</b> ${fix}`:'Baris ini sudah benar. Periksa baris lain.'})))}
+det('#d1','Kasus 1:',['x + 5 = 12','x = 12 + 5','x = 17'],1,'Untuk menghilangkan + 5, kedua ruas <b>dikurangi</b> 5: x = 12 − 5 = 7. Uji: 7 + 5 = 12.');
+det('#d2','Kasus 2:',['2x = 10','x = 10 − 2','x = 8'],1,'2x berarti 2 dikali x. Operasi lawannya adalah <b>dibagi</b> 2: x = 10 ÷ 2 = 5. Uji: 2 × 5 = 10.');
+det('#d3','Kasus 3:',['3x − 4 = 8','3x = 8 − 4','x = 4 ÷ 3'],1,'Untuk meniadakan − 4, kedua ruas <b>ditambah</b> 4: 3x = 8 + 4 = 12, lalu x = 12 ÷ 3 = 4.');
+newEq(0);
+
+/* ===== TP3 ===== */
+function r3(){
+  const w=+$('#xw').value;$('#ow').textContent=w;const j=50+5*w,r=20+10*w;
+  $('#bj').style.width=Math.max(18,j/150*100)+'%';$('#bj').textContent=`Joko: ${j}`;
+  $('#br').style.width=Math.max(18,r/150*100)+'%';$('#br').textContent=`Rizka: ${r}`;
+  $('#t3').innerHTML=Array.from({length:w+1},(_,i)=>`<tr class="${50+5*i===20+10*i?'hl':''}"><td>${i}</td><td>${50+5*i}</td><td>${20+10*i}</td></tr>`).join('');
+}
+$('#xw').oninput=r3;r3();
+let dn3=0;const d3=()=>{if(++dn3===4)$('#sm3').hidden=false};
+mc('#m3','Misalkan w adalah banyak minggu. Persamaan yang menyatakan saldo mereka sama adalah …',[
+ {t:'50 + 5w = 20 + 10w',ok:1,w:'<b>Tepat.</b> Saldo = saldo awal + (tabungan per minggu × banyak minggu).'},
+ {t:'50w + 5 = 20w + 10',w:'Variabel w harus dikalikan dengan <b>tabungan per minggu</b>, bukan dengan saldo awal.'},
+ {t:'50 + 5 = 20 + 10',w:'Persamaan ini tidak memuat w, padahal yang dicari adalah banyak minggu.'}],d3);
+numq('#qa','#ba','#fa',{v:6,w:'<b>Tepat.</b> 50 + 5w = 20 + 10w → 30 = 5w → w = 6. Cocok dengan baris yang menyala di tabel.'},
+ v=>v===30?'30 adalah selisih saldo awal (50 − 20). Bagi dengan selisih tabungan per minggu (10 − 5) untuk mendapat w.':`Uji ${v} minggu: Joko 50 + 5(${v}) = ${50+5*v}, Rizka 20 + 10(${v}) = ${20+10*v}. Belum sama.`,d3);
+numq('#qb','#bb','#fb',{v:[80,80000],w:'<b>Tepat.</b> Saldo = 50 + 5(6) = 80, yaitu Rp80.000 untuk masing-masing.'},
+ v=>v===6?'6 adalah banyak minggunya. Yang ditanyakan saldo: masukkan w = 6 ke 50 + 5w.':'Belum tepat. Masukkan w = 6 ke 50 + 5w (atau 20 + 10w) dan jawab dalam ribu rupiah.',d3);
+mc('#m4','Misalkan k adalah jarak (km). Persamaan yang tepat adalah …',[
+ {t:'10 + 4k = 4 + 6k',ok:1,w:'<b>Tepat.</b> Ongkos = tarif buka + (tarif per km × k).'},
+ {t:'10k + 4 = 4k + 6',w:'Tarif buka tidak dikali jarak. Yang dikali k adalah tarif per km.'},
+ {t:'10 + 4 = 4 + 6',w:'Persamaan ini tidak memuat k, padahal yang dicari adalah jarak.'}]);
+numq('#qk','#bk','#fk',{v:3,w:'<b>Tepat.</b> 10 + 4k = 4 + 6k → 6 = 2k → k = 3. Uji: A = 10 + 12 = 22, B = 4 + 18 = 22 (ribu rupiah).'},
+ v=>v===6?'6 adalah selisih tarif buka (10 − 4). Bagi dengan selisih tarif per km (6 − 4).':`Uji ${v} km: A = 10 + 4(${v}) = ${10+4*v}, B = 4 + 6(${v}) = ${4+6*v}. Belum sama.`,d3);
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teks Argumentasi – Media Belajar Kelas XI</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap">
+<style>
+:root{--bg:#F2F5F9;--surface:#FFFFFF;--ink:#14213D;--muted:#506080;--line:#CBD5E3;--teal:#0B7A7C;--mark:#F5C84C;--markink:#3A2D00;--ok:#1E7A46;--bad:#B3322E;
+--tesis:#DCEBFA;--arg:#DDF2EC;--data:#FFF1CC;--tegas:#F3E1F0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1626;--surface:#18223A;--ink:#E8EDF7;--muted:#9AA9C6;--line:#2C3957;--teal:#4FC3C5;--mark:#F5C84C;--markink:#2A2100;--ok:#6FD39A;--bad:#FF8A84;
+--tesis:#1E3556;--arg:#17403A;--data:#4A3F14;--tegas:#4A2B47}}
+:root[data-theme="dark"]{--bg:#0F1626;--surface:#18223A;--ink:#E8EDF7;--muted:#9AA9C6;--line:#2C3957;--teal:#4FC3C5;--mark:#F5C84C;--markink:#2A2100;--ok:#6FD39A;--bad:#FF8A84;--tesis:#1E3556;--arg:#17403A;--data:#4A3F14;--tegas:#4A2B47}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:18px;line-height:1.65}
+h1,h2,h3,button,nav a{font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif}
+main{max-width:760px;margin:0 auto;padding:0 20px 64px}
+header{padding:56px 0 28px}
+h1{font-size:clamp(2.2rem,7vw,3.6rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+h1 span{background:linear-gradient(transparent 60%,var(--mark) 60%);color:var(--ink);padding:0 4px}
+header p{color:var(--muted);max-width:56ch;margin:0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);display:flex;gap:6px;overflow-x:auto;padding:10px 0;border-bottom:1px solid var(--line);z-index:5}
+nav a{white-space:nowrap;color:var(--ink);text-decoration:none;font-size:.9rem;padding:6px 12px;border-radius:99px;border:1px solid var(--line)}
+nav a:hover,nav a:focus-visible{background:var(--ink);color:var(--bg)}
+section{padding:44px 0 8px}
+h2{font-size:1.8rem;margin:0 0 12px;letter-spacing:-.01em}
+h3{font-size:1.1rem;margin:0 0 4px}
+.goals{padding-left:1.2em}
+.goals li{margin-bottom:6px}
+.stages{display:grid;gap:10px;margin-top:16px}
+details{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:6px;padding:12px 16px}
+summary{cursor:pointer;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:10px 0 0}
+.ex{background:var(--bg);padding:8px 12px;border-radius:4px;font-style:italic;margin-top:10px}
+table{width:100%;border-collapse:collapse;background:var(--surface);font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"Bricolage Grotesque",sans-serif}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;margin-top:12px}
+.lab{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;margin-top:14px}
+.lab h3{margin-bottom:8px}
+.text-body{line-height:1.9}
+.s{cursor:pointer;border-radius:3px;padding:2px 1px;border-bottom:2px dotted var(--muted);transition:background .2s}
+.s:hover,.s:focus-visible{background:var(--mark);color:var(--markink);outline:none}
+.s.on{border-bottom:2px solid transparent;color:var(--ink)}
+.s.on.tesis{background:var(--tesis)}.s.on.arg{background:var(--arg)}.s.on.data{background:var(--data)}.s.on.tegas{background:var(--tegas)}
+.info{margin-top:16px;padding:14px 16px;border-radius:6px;background:var(--bg);border:1px dashed var(--line);min-height:84px}
+.info b{font-family:"Bricolage Grotesque",sans-serif}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:.85rem;font-family:"Bricolage Grotesque",sans-serif}
+.legend i{padding:2px 10px;border-radius:99px;font-style:normal;color:var(--ink)}
+.note{font-size:.85rem;color:var(--muted);margin-top:10px}
+.q{margin:20px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:10px 14px;margin-bottom:6px;font-size:.95rem;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--teal)}
+.opt:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--surface))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,var(--surface))}
+.fb{font-size:.92rem;color:var(--muted);margin:4px 0 0;min-height:1.4em}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:6px;padding:10px 20px;font-size:1rem;cursor:pointer}
+#score{font-family:"Bricolage Grotesque",sans-serif;font-size:1.2rem;margin-left:12px}
+.sum{background:var(--ink);color:var(--bg);border-radius:8px;padding:20px 24px;margin-top:12px}
+.sum li{margin-bottom:6px}
+footer{margin-top:48px;color:var(--muted);font-size:.85rem}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>Teks <span>Argumentasi</span></h1>
+<p>Media belajar Bahasa Indonesia untuk kelas XI. Pelajari cara menyusun pendapat yang meyakinkan, lalu uji pemahamanmu.</p>
+</header>
+<nav aria-label="Navigasi materi">
+<a href="#tujuan">Tujuan</a><a href="#struktur">Struktur</a><a href="#bahasa">Kebahasaan</a><a href="#bedah">Bedah teks</a><a href="#kuis">Kuis</a><a href="#rangkuman">Rangkuman</a>
+</nav>
+
+<section id="tujuan">
+<h2>Setelah belajar, kamu mampu…</h2>
+<ul class="goals">
+<li>menjelaskan pengertian dan ciri teks argumentasi;</li>
+<li>mengenali tesis, argumen, dan penegasan ulang dalam sebuah teks;</li>
+<li>menggunakan konjungsi dan kata kunci yang tepat untuk menyusun argumen;</li>
+<li>menilai apakah sebuah argumen didukung data atau fakta.</li>
+</ul>
+<p><b>Teks argumentasi</b> adalah teks yang berisi pendapat penulis tentang suatu masalah, disertai alasan dan bukti agar pembaca yakin atau setuju. Bedanya dengan teks persuasi: argumentasi meyakinkan lewat <em>logika dan bukti</em>, sedangkan persuasi lebih banyak mengajak lewat perasaan.</p>
+</section>
+
+<section id="struktur">
+<h2>Struktur teks argumentasi</h2>
+<p>Buka tiap bagian untuk melihat fungsi dan contohnya.</p>
+<div class="stages">
+<details style="--c:#4A90D9" open>
+<summary>Tesis (pernyataan pendapat)</summary>
+<p>Kalimat yang memuat posisi penulis terhadap masalah. Biasanya ada di awal teks dan bisa dijawab “setuju” atau “tidak setuju”.</p>
+<div class="ex">“Penggunaan ponsel di dalam kelas sebaiknya dibatasi secara tegas.”</div>
+</details>
+<details style="--c:#2BA88A">
+<summary>Argumentasi (alasan dan bukti)</summary>
+<p>Rangkaian alasan yang mendukung tesis. Argumen yang kuat diperkuat fakta, data, kutipan ahli, atau contoh nyata. Satu paragraf sebaiknya memuat satu gagasan utama.</p>
+<div class="ex">“Pertama, ponsel memecah konsentrasi siswa karena notifikasi terus mengalihkan perhatian.”</div>
+</details>
+<details style="--c:#C99A12">
+<summary>Penegasan ulang (kesimpulan)</summary>
+<p>Penulis menegaskan kembali tesis dengan kata-kata berbeda, sering disertai saran atau ajakan. Jangan menambahkan argumen baru di bagian ini.</p>
+<div class="ex">“Oleh karena itu, sekolah perlu menetapkan aturan yang jelas agar kelas tetap fokus.”</div>
+</details>
+</div>
+</section>
+
+<section id="bahasa">
+<h2>Ciri kebahasaan</h2>
+<div class="wrap"><table>
+<tr><th>Ciri</th><th>Contoh</th></tr>
+<tr><td>Konjungsi sebab-akibat</td><td>karena, sebab, sehingga, akibatnya, oleh karena itu</td></tr>
+<tr><td>Konjungsi penambahan dan urutan</td><td>pertama, selain itu, lagi pula, di samping itu</td></tr>
+<tr><td>Konjungsi pertentangan</td><td>namun, meskipun, tetapi, sebaliknya</td></tr>
+<tr><td>Kata yang menyatakan pendapat</td><td>menurut saya, sebaiknya, seharusnya, perlu, patut</td></tr>
+<tr><td>Kata teknis atau istilah</td><td>sesuai topik, misalnya <em>notifikasi, konsentrasi, regulasi</em></td></tr>
+<tr><td>Kalimat bernada tegas dan objektif</td><td>menggunakan data, bukan sekadar perasaan</td></tr>
+</table></div>
+</section>
+
+<section id="bedah">
+<h2>Bedah teks</h2>
+<p>Klik tiap kalimat untuk mengetahui perannya dalam teks.</p>
+<div class="lab">
+<h3>Ponsel di Dalam Kelas</h3>
+<p class="text-body" id="teks"></p>
+<div class="legend">
+<i style="background:var(--tesis)">Tesis</i><i style="background:var(--arg)">Argumen</i><i style="background:var(--data)">Data pendukung</i><i style="background:var(--tegas)">Penegasan ulang</i>
+</div>
+<div class="info" id="info" aria-live="polite">Pilih sebuah kalimat di atas untuk melihat penjelasannya.</div>
+<p class="note">Teks dan angka dalam contoh ini fiktif, dibuat khusus untuk latihan.</p>
+</div>
+</section>
+
+<section id="kuis">
+<h2>Uji pemahaman</h2>
+<div id="quiz"></div>
+<button class="btn" id="reset">Ulangi kuis</button><span id="score" aria-live="polite"></span>
+</section>
+
+<section id="rangkuman">
+<h2>Rangkuman</h2>
+<div class="sum"><ul>
+<li>Teks argumentasi menyampaikan pendapat yang diperkuat alasan dan bukti.</li>
+<li>Strukturnya: tesis, argumentasi, penegasan ulang.</li>
+<li>Gunakan konjungsi sebab-akibat dan pertentangan agar alur nalar jelas.</li>
+<li>Argumen terbaik didukung data, fakta, atau kutipan yang bisa dicek.</li>
+</ul></div>
+<footer>Media belajar Bahasa Indonesia · Fase F (kelas XI)</footer>
+</section>
+</main>
+
+<script>
+var S=[
+{t:"Penggunaan ponsel di dalam kelas sebaiknya dibatasi secara tegas.",r:"tesis",l:"Tesis",e:"Kalimat ini memuat posisi penulis. Kata “sebaiknya” menandai pendapat, bukan fakta."},
+{t:"Pertama, ponsel memecah konsentrasi siswa karena notifikasi yang muncul terus-menerus mengalihkan perhatian dari penjelasan guru.",r:"arg",l:"Argumen 1",e:"Alasan pertama untuk mendukung tesis. Penanda “pertama” dan konjungsi “karena” menunjukkan hubungan sebab-akibat."},
+{t:"Dalam pengamatan di sebuah kelas, siswa memeriksa ponsel rata-rata delapan kali selama satu jam pelajaran.",r:"data",l:"Data pendukung",e:"Angka konkret memperkuat argumen 1. Tanpa data, argumen hanya berupa dugaan."},
+{t:"Selain itu, ponsel membuka peluang kecurangan saat ujian sehingga nilai tidak lagi mencerminkan kemampuan sebenarnya.",r:"arg",l:"Argumen 2",e:"Alasan kedua, diawali “selain itu”. Kata “sehingga” menyatakan akibat."},
+{t:"Meskipun ponsel dapat membantu mencari sumber belajar, manfaat itu tetap dapat diperoleh melalui penggunaan terarah atas izin guru.",r:"arg",l:"Sanggahan",e:"Penulis mengakui pandangan lawan (“meskipun”), lalu menjawabnya. Cara ini membuat argumen lebih kuat."},
+{t:"Oleh karena itu, sekolah perlu menetapkan aturan penggunaan ponsel yang jelas agar kelas tetap menjadi ruang belajar yang fokus.",r:"tegas",l:"Penegasan ulang",e:"Menegaskan kembali tesis dengan kata berbeda dan menutup dengan saran. Tidak ada argumen baru."}
+];
+var tk=document.getElementById("teks"),info=document.getElementById("info");
+S.forEach(function(s,i){
+ var sp=document.createElement("span");sp.className="s";sp.tabIndex=0;sp.setAttribute("role","button");sp.textContent=s.t;
+ function pick(){
+  document.querySelectorAll(".s").forEach(function(x){x.classList.remove("on","tesis","arg","data","tegas")});
+  sp.classList.add("on",s.r);
+  info.innerHTML="<b>"+s.l+"</b><br>"+s.e;
+ }
+ sp.addEventListener("click",pick);
+ sp.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick()}});
+ tk.appendChild(sp);tk.appendChild(document.createTextNode(" "));
+});
+
+var Q=[
+{q:"Bagian teks argumentasi yang memuat pendapat penulis tentang suatu masalah disebut…",o:["Penegasan ulang","Tesis","Argumentasi","Orientasi"],a:1,f:"Tesis adalah pernyataan posisi penulis, biasanya di awal teks."},
+{q:"Perhatikan kalimat: “Siswa sulit fokus sebab notifikasi terus berbunyi.” Kata yang menunjukkan hubungan sebab adalah…",o:["siswa","sulit","sebab","terus"],a:2,f:"“Sebab” adalah konjungsi sebab-akibat."},
+{q:"Manakah yang paling memperkuat sebuah argumen?",o:["Perasaan pribadi penulis","Ajakan yang berulang-ulang","Data atau fakta yang dapat diperiksa","Kalimat yang panjang"],a:2,f:"Teks argumentasi meyakinkan lewat bukti, bukan sekadar perasaan."},
+{q:"Konjungsi yang tepat untuk mengawali sanggahan terhadap pendapat lawan adalah…",o:["oleh karena itu","selain itu","meskipun","pertama"],a:2,f:"“Meskipun” menyatakan pertentangan sehingga cocok untuk menyanggah."},
+{q:"Apa yang sebaiknya TIDAK dilakukan pada bagian penegasan ulang?",o:["Mengulang tesis dengan kata lain","Memberi saran","Menambahkan argumen baru","Menutup dengan kesimpulan"],a:2,f:"Argumen baru tempatnya di bagian argumentasi, bukan di penutup."}
+];
+var qz=document.getElementById("quiz"),sc=document.getElementById("score"),done,right;
+function build(){
+ qz.innerHTML="";done=0;right=0;sc.textContent="";
+ Q.forEach(function(it,qi){
+  var d=document.createElement("div");d.className="q";
+  var p=document.createElement("p");p.textContent=(qi+1)+". "+it.q;d.appendChild(p);
+  var fb=document.createElement("p");fb.className="fb";
+  var bs=[];
+  it.o.forEach(function(o,oi){
+   var b=document.createElement("button");b.className="opt";b.textContent=o;
+   b.addEventListener("click",function(){
+    bs.forEach(function(x){x.disabled=true});
+    bs[it.a].classList.add("right");
+    if(oi===it.a){right++;fb.textContent="Benar. "+it.f}else{b.classList.add("wrong");fb.textContent="Belum tepat. "+it.f}
+    done++;
+    if(done===Q.length){sc.textContent="Skor: "+right+" dari "+Q.length+(right===Q.length?" — sempurna!":right>=3?" — bagus, ulangi bagian yang masih keliru.":" — baca lagi materinya, lalu coba kembali.")}
+   });
+   bs.push(b);d.appendChild(b);
+  });
+  d.appendChild(fb);qz.appendChild(d);
+ });
+}
+document.getElementById("reset").addEventListener("click",build);
+build();
+</script>
+</body>
+</html>
