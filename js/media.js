@@ -209,7 +209,7 @@ window.RUANGMEDIA_ITEMS = [
     type: ["Game", "Kuis", "Kompetisi"],
     description: "Latihan interaktif untuk mengenali struktur, unsur 5W+1H, dan kebahasaan teks berita melalui permainan kartu, kuis, dan tarik tambang kelompok.",
     path: "media/bahasa indonesia/cerpen/media1.html",
-    thumbnail: "images/image (10).png",
+    thumbnail: "images/image (12).png",
     color: "blueSoft", 
     icon: "..."
   }
