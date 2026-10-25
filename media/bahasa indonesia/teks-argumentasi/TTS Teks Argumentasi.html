@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TTS Teks Argumentasi – Kelas XI</title>
+<style>
+:root{--bg:#EDF5EF;--sf:#fff;--ink:#102418;--mu:#4E6558;--ln:#C6D8CB;--cb:#12392B;--gd:#12392B;--g:#1E7A4C;--y:#F2B93B;--ya:#3B2A00;--bad:#C0392B;--ac:#F2B93B}
+@media(prefers-color-scheme:dark){:root{--bg:#0C1A12;--sf:#15291E;--ink:#E6F2EA;--mu:#93AE9E;--ln:#2A4636;--cb:#5FCB93;--gd:#07110B;--g:#5FCB93;--bad:#FF8A84}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Trebuchet MS","Segoe UI",system-ui,sans-serif}
+.w{max-width:940px;margin:0 auto;padding:0 16px 40px}
+header{background:linear-gradient(135deg,#12392B,#1E7A4C);color:#fff;padding:26px 0 22px;overflow:hidden}
+header .w{padding-bottom:0}
+.tag{display:inline-block;background:var(--y);color:var(--ya);border-radius:4px;padding:2px 10px;font-size:.8rem;font-weight:700;margin:0 6px 10px 0}
+.logo i{display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:12px;background:var(--y);color:var(--ya);font:900 2rem "Trebuchet MS",sans-serif;margin-right:6px;transform:rotate(-5deg);box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.logo i:nth-child(2){background:#2BB59A;color:#04241C;transform:rotate(4deg)}
+.logo i:nth-child(3){background:#EE6C92;color:#3A0A1B;transform:rotate(-3deg)}
+h1{margin:12px 0 4px;font-size:clamp(1.5rem,5vw,2.3rem);line-height:1.15}
+header p{margin:0;opacity:.9}
+.st{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.st span{background:rgba(255,255,255,.16);border-radius:99px;padding:3px 14px;font-weight:700;font-size:.9rem}
+details{background:var(--sf);border:1px solid var(--ln);border-left:6px solid var(--g);border-radius:8px;padding:10px 16px;margin-top:16px}
+summary{cursor:pointer;font-weight:700}
+details ol{margin:6px 0;padding-left:1.3em}
+.note{font-size:.82rem;color:var(--mu)}
+.pages{display:flex;gap:8px;overflow-x:auto;margin:16px 0 12px;padding:4px 2px}
+.pb{flex:1;min-width:140px;border:2px solid var(--ln);background:var(--sf);color:var(--ink);border-radius:12px;padding:8px 12px;font:inherit;cursor:pointer;text-align:left;line-height:1.3}
+.pb b{display:block}.pb span{font-size:.82rem}
+.pb[aria-selected=true]{background:var(--c);border-color:var(--c);color:#1c1200;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:16px;margin-top:12px}
+.card h2{margin:0;font-size:1.2rem}.card h3{margin:0 0 8px;font-size:1.05rem}
+.pr{height:10px;background:var(--ln);border-radius:99px;overflow:hidden;margin:10px 0 4px}
+.pr i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.ac{background:var(--gd);color:#fff;border-radius:10px;padding:10px 14px;margin:12px 0;min-height:3.2em;font-weight:600}
+#gw{overflow-x:auto;padding:6px 0}
+.grid{display:grid;gap:3px;width:max-content;margin:0 auto}
+.gap{width:var(--cs);height:var(--cs)}
+.cell{position:relative;width:var(--cs);height:var(--cs);background:var(--sf);border:2px solid var(--cb);border-radius:6px}
+.cell input{width:100%;height:100%;border:0;background:transparent;text-align:center;font:800 calc(var(--cs)*.55) "Trebuchet MS",sans-serif;color:var(--ink);text-transform:uppercase;padding:0;border-radius:4px;caret-color:transparent;cursor:pointer}
+.cell input:focus{outline:none}
+.cell .n{position:absolute;top:1px;left:3px;font-size:calc(var(--cs)*.27);font-weight:700;color:var(--mu);pointer-events:none;line-height:1}
+.cell.hl{background:color-mix(in srgb,var(--y) 28%,var(--sf))}
+.cell.act{background:var(--y);border-color:var(--ya)}
+.cell.act input,.cell.act .n{color:var(--ya)}
+.cell.bad{background:color-mix(in srgb,var(--bad) 20%,var(--sf))}
+.cell.bad input{color:var(--bad)}
+.cell.hint input{color:var(--g)}
+.won .cell{background:var(--ac);border-color:var(--gd);animation:pop .45s both;animation-delay:calc(var(--i)*28ms)}
+.won .cell input,.won .cell .n{color:#1c1200}
+@keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.tb{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.btn{background:var(--gd);color:#fff;border:0;border-radius:10px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer}
+@media(prefers-color-scheme:dark){.btn{background:var(--g);color:#07110B}}
+.btn.s{background:transparent;color:var(--ink);border:2px solid var(--ln)}
+.ts{font-weight:700;color:var(--mu);min-height:1.5em}
+.cl{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:680px){.cl{grid-template-columns:1fr}}
+.cl ul{list-style:none;margin:0;padding:0}
+.cl li{padding:7px 10px;border-radius:8px;cursor:pointer;margin-bottom:3px;font-size:.95rem}
+.cl li b{display:inline-block;min-width:1.6em;color:var(--g)}
+.cl li:hover{background:color-mix(in srgb,var(--y) 18%,var(--sf))}
+.cl li.on{background:var(--y);color:var(--ya)}.cl li.on b{color:var(--ya)}
+.cl li.ok{opacity:.55;text-decoration:line-through}
+#ov{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:20;padding:20px}
+#ov.on{display:flex}
+.md{background:var(--sf);border-radius:18px;padding:26px;max-width:380px;text-align:center}
+.md .stars{font-size:2.4rem;color:var(--y);letter-spacing:4px}
+.md h2{font-size:1.4rem;margin:4px 0}
+.cf{position:fixed;top:-20px;width:10px;height:14px;z-index:30;animation:fall linear forwards;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="w">
+<span class="tag">SMK · Kelas XI</span><span class="tag">Fase F</span><span class="tag">Bahasa Indonesia</span>
+<div class="logo" aria-hidden="true"><i>T</i><i>T</i><i>S</i></div>
+<h1>Teka-Teki Silang Teks Argumentasi</h1>
+<p>Selesaikan 4 halaman, kumpulkan bintang sebanyak mungkin!</p>
+<div class="st"><span id="stp"></span><span id="sst"></span></div>
+</div></header>
+
+<div class="w">
+<details>
+<summary>Tujuan pembelajaran dan cara bermain</summary>
+<ol><li>Mengenali struktur dan istilah penting teks argumentasi.</li><li>Menggunakan konjungsi dan kata penanda dalam argumen.</li><li>Membedakan fakta dan opini serta menilai argumen.</li></ol>
+<p><b>Cara bermain:</b> klik kotak atau petunjuk, lalu ketik jawaban. Klik kotak yang sama sekali lagi untuk berganti arah Mendatar dan Menurun. ⭐⭐⭐ jika tanpa petunjuk dan tanpa salah saat memeriksa.</p>
+<p class="note">Sesuaikan tujuan pembelajaran dengan modul ajar Bapak/Ibu.</p>
+</details>
+
+<div class="pages" id="pg" role="tablist"></div>
+
+<div class="card" id="main">
+<h2 id="pt"></h2>
+<div class="note" id="ps"></div>
+<div class="pr"><i id="pb"></i></div>
+<div class="note" id="pn"></div>
+<div class="ac" id="ac" aria-live="polite"></div>
+<div id="gw"><div class="grid" id="grid"></div></div>
+<div class="tb">
+<button class="btn" id="bc">✔ Periksa</button>
+<button class="btn s" id="bh">💡 Petunjuk</button>
+<button class="btn s" id="br">↺ Ulangi</button>
+<span class="ts" id="ts" aria-live="polite"></span>
+</div>
+</div>
+
+<div class="cl">
+<div class="card"><h3>➡ Mendatar</h3><ul id="ca"></ul></div>
+<div class="card"><h3>⬇ Menurun</h3><ul id="cd"></ul></div>
+</div>
+</div>
+
+<div id="ov"><div class="md" role="dialog" aria-modal="true">
+<div class="stars" id="mst"></div><h2 id="mt"></h2><p id="mp"></p>
+<button class="btn" id="m1"></button> <button class="btn s" id="m2">Tutup</button>
+</div></div>
+
+<script>
+var P=[{"t":"Mengenal Teks Argumentasi","e":"🧩","s":"Istilah dasar dan struktur teks argumentasi","rows":11,"cols":10,"w":[{"a":"PENDAPAT","q":"Pandangan penulis terhadap suatu masalah","r":0,"c":0,"d":"A","n":1},{"a":"TESIS","q":"Pernyataan pendapat penulis yang biasanya terdapat di awal teks argumentasi","r":0,"c":7,"d":"D","n":2},{"a":"PERSUASI","q":"Jenis teks yang lebih menekankan ajakan daripada bukti","r":2,"c":1,"d":"A","n":3},{"a":"PENEGASAN","q":"Bagian penutup berupa ___ ulang, yaitu menegaskan kembali tesis","r":4,"c":1,"d":"A","n":4},{"a":"PENULIS","q":"Orang yang menyusun teks argumentasi","r":4,"c":1,"d":"D","n":4},{"a":"ALASAN","q":"Dasar yang menguatkan sebuah pendapat","r":4,"c":6,"d":"D","n":5},{"a":"ARGUMEN","q":"Alasan yang dikemukakan untuk mendukung tesis","r":4,"c":8,"d":"D","n":6},{"a":"LOGIKA","q":"Cara berpikir yang runtut dan masuk akal","r":8,"c":1,"d":"A","n":7}]},{"t":"Kebahasaan dan Konjungsi","e":"🔗","s":"Kata penghubung dan penanda dalam menyusun argumen","rows":11,"cols":11,"w":[{"a":"MESKIPUN","q":"Konjungsi untuk mengakui pandangan lawan sebelum disanggah","r":0,"c":0,"d":"A","n":1},{"a":"PERTAMA","q":"Kata penanda urutan untuk argumen yang paling awal","r":0,"c":5,"d":"D","n":2},{"a":"KARENA","q":"Konjungsi penanda sebab","r":1,"c":10,"d":"D","n":3},{"a":"NAMUN","q":"Konjungsi penanda pertentangan, sering dipakai untuk menyanggah","r":2,"c":8,"d":"D","n":4},{"a":"TETAPI","q":"Konjungsi pertentangan yang bermakna sama dengan “namun”","r":5,"c":3,"d":"D","n":5},{"a":"SEBAIKNYA","q":"Kata yang menandai saran atau pendapat penulis","r":6,"c":2,"d":"A","n":6},{"a":"SELAIN","q":"___ itu: penanda penambahan argumen","r":8,"c":0,"d":"A","n":7},{"a":"SEHINGGA","q":"Konjungsi penanda akibat","r":10,"c":0,"d":"A","n":8}]},{"t":"Fakta, Opini, dan Bukti","e":"🔍","s":"Membedakan fakta dan opini serta memperkuat argumen","rows":10,"cols":9,"w":[{"a":"OPINI","q":"Pandangan pribadi yang belum tentu dapat dibuktikan","r":0,"c":4,"d":"D","n":1},{"a":"KUTIPAN","q":"Pernyataan ahli yang diambil untuk memperkuat argumen","r":1,"c":0,"d":"A","n":2},{"a":"BUKTI","q":"Sesuatu yang menunjukkan kebenaran suatu pernyataan","r":2,"c":8,"d":"D","n":3},{"a":"FAKTA","q":"Pernyataan yang dapat dibuktikan kebenarannya","r":3,"c":2,"d":"D","n":4},{"a":"STATISTIK","q":"Data berupa angka hasil pengumpulan dan pengolahan","r":4,"c":0,"d":"A","n":5},{"a":"SUMBER","q":"Asal informasi yang harus dapat ditelusuri","r":4,"c":5,"d":"D","n":6},{"a":"DATA","q":"Angka atau keterangan yang memperkuat argumen","r":6,"c":0,"d":"A","n":7},{"a":"SURVEI","q":"Kegiatan mengumpulkan pendapat banyak orang untuk memperoleh data","r":9,"c":3,"d":"A","n":8}]},{"t":"Menilai Argumen","e":"⚖️","s":"Mengevaluasi kekuatan dan kelemahan argumen","rows":12,"cols":12,"w":[{"a":"SANGGAHAN","q":"Bantahan terhadap pendapat yang berlawanan","r":0,"c":5,"d":"D","n":1},{"a":"EVALUASI","q":"Kegiatan menilai kekuatan dan kelemahan argumen","r":0,"c":9,"d":"D","n":2},{"a":"RELEVAN","q":"Berkaitan langsung dengan tesis","r":2,"c":1,"d":"D","n":3},{"a":"OBJEKTIF","q":"Sesuai fakta dan tidak memihak","r":2,"c":3,"d":"D","n":4},{"a":"KUAT","q":"Sifat argumen yang didukung data dan logika","r":2,"c":7,"d":"A","n":5},{"a":"KESIMPULAN","q":"Simpulan di bagian akhir teks","r":2,"c":7,"d":"D","n":5},{"a":"GENERALISASI","q":"Kesimpulan umum tanpa bukti cukup, misalnya memakai kata “semua”","r":5,"c":0,"d":"A","n":6},{"a":"LEMAH","q":"Sifat argumen yang tidak didukung bukti","r":9,"c":7,"d":"A","n":7}]}];
+var COLORS=["#F2B93B","#2BB59A","#EE6C92","#7C9BFF"];
+var ST=P.map(function(){return{vals:{},hints:0,wrong:0,done:false,stars:0}});
+var cur=0,pg,cells,sel=0,act=null,S;
+function $(i){return document.getElementById(i)}
+function K(r,c){return r+","+c}
+
+function tabs(){
+ var h="",tot=0,dn=0;
+ P.forEach(function(p,i){
+  var s=ST[i];if(s.done){tot+=s.stars;dn++}
+  var st=s.done?"★★★".slice(0,s.stars)+"☆☆☆".slice(0,3-s.stars):"☆☆☆";
+  h+='<button class="pb" role="tab" style="--c:'+COLORS[i]+'" aria-selected="'+(i==cur)+'" data-i="'+i+'"><b>'+p.e+" Hal. "+(i+1)+"</b><span>"+p.t+'</span><br><span>'+st+"</span></button>";
+ });
+ $("pg").innerHTML=h;
+ $("stp").textContent="Selesai: "+dn+"/"+P.length+" halaman";
+ $("sst").textContent="⭐ "+tot+"/"+P.length*3;
+}
+$("pg").onclick=function(e){var b=e.target.closest(".pb");if(b)load(+b.dataset.i)};
+
+function size(){
+ if(!pg)return;
+ var cs=Math.max(24,Math.min(48,Math.floor(($("gw").clientWidth-8-pg.cols*3)/pg.cols)));
+ $("grid").style.setProperty("--cs",cs+"px");
+}
+window.addEventListener("resize",size);
+
+function load(i){
+ cur=i;pg=P[i];S=ST[i];cells={};sel=0;act=null;
+ $("main").style.setProperty("--ac",COLORS[i]);
+ $("pt").textContent=pg.e+" "+pg.t;$("ps").textContent=pg.s;
+ pg.w.forEach(function(w,wi){
+  w.ck=[];
+  for(var k=0;k<w.a.length;k++){
+   var r=w.r+(w.d=="D"?k:0),c=w.c+(w.d=="A"?k:0),kk=K(r,c);
+   var ce=cells[kk]||(cells[kk]={r:r,c:c,a:w.a[k],ws:{}});
+   ce.ws[w.d]=wi;w.ck.push(kk);if(k==0)ce.num=w.n;
+  }
+ });
+ var g=$("grid");g.innerHTML="";g.className="grid"+(S.done?" won":"");
+ g.style.gridTemplateColumns="repeat("+pg.cols+",var(--cs))";
+ var idx=0;
+ for(var r=0;r<pg.rows;r++)for(var c=0;c<pg.cols;c++){
+  var kk=K(r,c),ce=cells[kk];
+  if(!ce){var d=document.createElement("div");d.className="gap";g.appendChild(d);continue}
+  mk(ce,kk,idx++);g.appendChild(ce.el);
+ }
+ var la="",ld="";
+ pg.w.forEach(function(w,wi){
+  var li='<li data-w="'+wi+'" id="cw'+wi+'"><b>'+w.n+".</b>"+w.q+" ("+w.a.length+" huruf)</li>";
+  if(w.d=="A")la+=li;else ld+=li;
+ });
+ $("ca").innerHTML=la;$("cd").innerHTML=ld;
+ first();tabs();prog();$("ts").textContent="";size();
+}
+function first(){
+ var w0=0;for(var i=0;i<pg.w.length;i++){if(pg.w[i].d=="A"){w0=i;break}}
+ sel=w0;act=pg.w[w0].ck[0];paint();
+}
+function mk(ce,kk,idx){
+ var el=document.createElement("div");el.className="cell";el.style.setProperty("--i",idx);
+ if(ce.num){var n=document.createElement("span");n.className="n";n.textContent=ce.num;el.appendChild(n)}
+ var inp=document.createElement("input");inp.maxLength=2;inp.autocomplete="off";inp.autocapitalize="characters";inp.setAttribute("aria-label","Kotak baris "+(ce.r+1)+" kolom "+(ce.c+1));
+ inp.value=S.vals[kk]||"";
+ el.appendChild(inp);ce.el=el;ce.inp=inp;
+ var was=false;
+ inp.addEventListener("pointerdown",function(){was=(act===kk)});
+ inp.addEventListener("focus",function(){if(act!==kk)setSel(kk,pg.w[sel].d)});
+ inp.addEventListener("click",function(){
+  if(was&&ce.ws.A!==undefined&&ce.ws.D!==undefined)setSel(kk,pg.w[sel].d=="A"?"D":"A");
+  was=false;
+ });
+ inp.addEventListener("input",function(){
+  var v=inp.value.toUpperCase().replace(/[^A-Z]/g,"");inp.value=v.slice(-1);
+  S.vals[kk]=inp.value;el.classList.remove("bad","hint");
+  if(inp.value)move(1);
+  prog();win();
+ });
+ inp.addEventListener("keydown",function(e){
+  var k=e.key,dr=0,dc=0;
+  if(k=="Backspace"&&!inp.value){e.preventDefault();move(-1);var p=cells[act];p.inp.value="";S.vals[act]="";p.el.classList.remove("bad","hint");prog();return}
+  if(k=="ArrowRight")dc=1;else if(k=="ArrowLeft")dc=-1;else if(k=="ArrowDown")dr=1;else if(k=="ArrowUp")dr=-1;else return;
+  e.preventDefault();
+  var nk=K(ce.r+dr,ce.c+dc);
+  if(cells[nk]){setSel(nk,dc?"A":"D");cells[nk].inp.focus()}
+ });
+}
+function setSel(kk,d){
+ var ce=cells[kk];if(!ce)return;
+ if(ce.ws[d]===undefined)d=(ce.ws.A!==undefined?"A":"D");
+ sel=ce.ws[d];act=kk;paint();
+}
+function move(s){
+ var w=pg.w[sel],i=w.ck.indexOf(act)+s;
+ if(i>=0&&i<w.ck.length){act=w.ck[i];paint();cells[act].inp.focus()}
+}
+function paint(){
+ for(var k in cells)cells[k].el.classList.remove("hl","act");
+ var w=pg.w[sel];
+ w.ck.forEach(function(k){cells[k].el.classList.add("hl")});
+ if(cells[act])cells[act].el.classList.add("act");
+ document.querySelectorAll(".cl li").forEach(function(li){li.classList.remove("on")});
+ var li=$("cw"+sel);if(li)li.classList.add("on");
+ $("ac").textContent=w.n+" "+(w.d=="A"?"Mendatar":"Menurun")+": "+w.q+" ("+w.a.length+" huruf)";
+}
+document.querySelector(".cl").onclick=function(e){
+ var li=e.target.closest("li");if(!li)return;
+ var wi=+li.dataset.w,w=pg.w[wi];sel=wi;
+ var t=w.ck.filter(function(k){return !S.vals[k]})[0]||w.ck[0];
+ act=t;paint();cells[t].inp.focus();
+};
+function prog(){
+ var tot=0,f=0;
+ for(var k in cells){tot++;if(S.vals[k])f++}
+ $("pb").style.width=(f/tot*100)+"%";
+ $("pn").textContent=f+" dari "+tot+" huruf terisi";
+ pg.w.forEach(function(w,wi){
+  var ok=w.ck.every(function(k){return S.vals[k]===cells[k].a});
+  var li=$("cw"+wi);if(li)li.classList.toggle("ok",ok);
+ });
+}
+function msg(t){$("ts").textContent=t}
+$("bc").onclick=function(){
+ var bad=0,fill=0;
+ for(var k in cells){
+  var v=S.vals[k];if(!v)continue;fill++;
+  if(v!==cells[k].a){cells[k].el.classList.add("bad");bad++}
+ }
+ if(!fill)msg("Isi beberapa kotak dulu.");
+ else if(bad){S.wrong++;msg(bad+" huruf masih salah (merah).")}
+ else msg("Sejauh ini semua benar! 👍");
+};
+$("bh").onclick=function(){
+ var w=pg.w[sel],t=w.ck.filter(function(k){return S.vals[k]!==cells[k].a})[0];
+ if(!t){msg("Kata ini sudah benar.");return}
+ S.vals[t]=cells[t].a;cells[t].inp.value=cells[t].a;
+ cells[t].el.classList.remove("bad");cells[t].el.classList.add("hint");
+ S.hints++;msg("Petunjuk dipakai: "+S.hints);prog();win();
+};
+$("br").onclick=function(){
+ ST[cur]={vals:{},hints:0,wrong:0,done:false,stars:0};load(cur);
+};
+function win(){
+ if(S.done)return;
+ for(var k in cells)if(S.vals[k]!==cells[k].a)return;
+ S.done=true;S.stars=(S.hints==0&&S.wrong==0)?3:(S.hints<=2?2:1);
+ $("grid").classList.add("won");tabs();boom();
+ var all=ST.every(function(s){return s.done}),tot=0;ST.forEach(function(s){tot+=s.stars});
+ $("mst").textContent="★★★".slice(0,S.stars)+"☆☆☆".slice(0,3-S.stars);
+ if(all){
+  $("mt").textContent="🏆 Semua halaman selesai!";
+  $("mp").textContent="Total "+tot+" dari "+P.length*3+" bintang. "+(tot>=P.length*3-1?"Luar biasa, kamu ahli teks argumentasi!":tot>=P.length*2?"Hebat! Coba ulangi halaman yang bintangnya masih sedikit.":"Bagus! Ulangi halaman agar bintangmu bertambah.");
+  $("m1").textContent="Tutup";$("m1").onclick=function(){$("ov").classList.remove("on")};
+ }else{
+  $("mt").textContent="🎉 Halaman "+(cur+1)+" selesai!";
+  $("mp").textContent="Petunjuk dipakai: "+S.hints+" · Pemeriksaan salah: "+S.wrong;
+  var nx=ST.findIndex(function(s,i){return !s.done&&i>cur});if(nx<0)nx=ST.findIndex(function(s){return !s.done});
+  $("m1").textContent="Ke halaman "+(nx+1)+" →";
+  $("m1").onclick=function(){$("ov").classList.remove("on");load(nx);window.scrollTo(0,0)};
+ }
+ setTimeout(function(){$("ov").classList.add("on");$("m1").focus()},900);
+}
+$("m2").onclick=function(){$("ov").classList.remove("on")};
+function boom(){
+ if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+ var cs=["#F2B93B","#2BB59A","#EE6C92","#7C9BFF","#FFFFFF"];
+ for(var i=0;i<44;i++){
+  var s=document.createElement("span");s.className="cf";
+  s.style.left=Math.random()*100+"vw";s.style.background=cs[i%5];
+  s.style.animationDuration=(2+Math.random()*2)+"s";s.style.animationDelay=(Math.random()*.6)+"s";
+  document.body.appendChild(s);
+  (function(x){setTimeout(function(){x.remove()},4800)})(s);
+ }
+}
+load(0);
+</script>
+</body>
+</html>
