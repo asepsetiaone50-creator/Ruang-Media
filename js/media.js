@@ -68,7 +68,7 @@ window.RUANGMEDIA_ITEMS = [
       "TP 3 — Menggunakan kebalikan teorema untuk menentukan jenis segitiga dan tripel Pythagoras",
       "TP 4 — Menyelesaikan masalah kontekstual (tangga, jarak, diagonal, layar TV)"
     ],
-    level: "SMP · Kelas VIII",
+    level: "SMP · Kelas V III",
     type: ["Simulasi", "Eksplorasi", "Studi Kasus"],
     description: "Menggunakan kebalikan teorema Pythagoras untuk menentukan jenis segitiga dan mengenali tripel Pythagoras.Memodelkan masalah sehari-hari menjadi segitiga siku-siku dan menyelesaikannya dengan teorema Pythagoras.",
     path: "media/matematika/teorema-pythagoras/bagian2/media2.html",
@@ -193,6 +193,22 @@ window.RUANGMEDIA_ITEMS = [
     type: ["Memori Box", "Kuis", "Tarik Tambang"],
     description: "Latihan interaktif untuk mengenali struktur, unsur 5W+1H, dan kebahasaan teks berita melalui permainan kartu, kuis, dan tarik tambang kelompok.",
     path: "media/bahasa indonesia/teks-berita/Teks Berita1.html",
+    thumbnail: "images/image (10).png",
+    color: "blueSoft", 
+    icon: "..."
+  },
+  {
+    id: "ular-tangga-cerpen",
+    title: "Ular Tangga Cerpen",
+    subject: "Bahasa Indonesia",
+    chapter: "Cerpen",
+    tp: [
+      "Latihan Soal"
+    ],
+    level: "SMK · Kelas XI",
+    type: ["Game", "Kuis", "Kompetisi"],
+    description: "Latihan interaktif untuk mengenali struktur, unsur 5W+1H, dan kebahasaan teks berita melalui permainan kartu, kuis, dan tarik tambang kelompok.",
+    path: "media/bahasa indonesia/cerpen/media1.html",
     thumbnail: "images/image (10).png",
     color: "blueSoft", 
     icon: "..."
